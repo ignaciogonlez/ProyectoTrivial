@@ -3,7 +3,7 @@ package datos;
 import java.io.Serializable;
 
 /** 
- * Modo de juego en el que se disparan 5 preguntas a dos jugadores (el que mas acierte gana)
+ *SOLO SI DA TIEMPO - Modo de juego en el que se disparan 5 preguntas a dos jugadores (el que mas acierte gana)
  */
 public class Duelo extends Juego implements Serializable{
 	

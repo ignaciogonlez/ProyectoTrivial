@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +34,9 @@ public class VentanaInicioSesion extends JFrame{
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
+		panel.setBackground(Color.yellow);
 		JPanel panelInferior = new JPanel(new FlowLayout());
+		panelInferior.setBackground(Color.red);
 		
 		bEntrar = new JButton("Entrar");
 		panelInferior.add(bEntrar);
@@ -49,7 +52,7 @@ public class VentanaInicioSesion extends JFrame{
 		TfUsuario.setBounds(330, 200, 160, 25);
 		panel.add(TfUsuario);
 		
-		lPasword = new JLabel("Pasword");
+		lPasword = new JLabel("Password");
 		lPasword.setBounds(270, 250, 80, 25);
 		panel.add(lPasword);
 		

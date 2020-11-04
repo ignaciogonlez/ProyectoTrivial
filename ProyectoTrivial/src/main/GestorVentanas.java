@@ -1,6 +1,7 @@
 package main;
 
 import ventanas.VentanaAmigos;
+import ventanas.VentanaCarga;
 import ventanas.VentanaClasificacion;
 import ventanas.VentanaInicioSesion;
 import ventanas.VentanaMenu;
@@ -18,7 +19,7 @@ public class GestorVentanas {
 	VentanaMenu ventanaMenu;
 	VentanaAmigos ventanaAmigos;
 	VentanaClasificacion ventanaClasificacion;
-	
+	VentanaCarga ventanaCarga;
 	
 	public GestorVentanas() {
 		ventanaPrincipal = new VentanaPrincipal();
@@ -27,7 +28,8 @@ public class GestorVentanas {
 		ventanaMenu = new VentanaMenu();
 		ventanaAmigos = new VentanaAmigos();
 		ventanaClasificacion = new VentanaClasificacion();
-		}
+		ventanaCarga = new VentanaCarga();
+	}
 	public VentanaPrincipal getVentanaPrincipal() {
 		return ventanaPrincipal;
 	}
@@ -46,5 +48,7 @@ public class GestorVentanas {
 	public VentanaClasificacion getVentanaClasificacion(){
 		return ventanaClasificacion;
 	}
-	
+	public VentanaCarga getVentanaCarga() {
+		return ventanaCarga;
+	}
 }

@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +28,7 @@ public class VentanaMenu extends JFrame{
 	setSize( 800, 600 );
 	setLocationRelativeTo( null );
 	JPanel panelInferior = new JPanel(new FlowLayout());
+	panelInferior.setBackground(Color.orange);
 	
 	bClasificacion = new JButton("Clasificacion");
 	panelInferior.add(bClasificacion);
@@ -38,6 +40,7 @@ public class VentanaMenu extends JFrame{
 	
 	bJugar = new JButton("JUGAR");
 	getContentPane().add(bJugar, "Center");
+	bJugar.setBackground(Color.green);
 	
 	bClasificacion.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -57,6 +60,12 @@ public class VentanaMenu extends JFrame{
 			dispose();
 		}
 	});
+	bJugar.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			Main.getGestorVentanas().getVentanaCarga().setVisible(true);
+			dispose();
+		}
+});
+	
 	}
-
 }

@@ -37,8 +37,10 @@ public class VentanaRegistrarse extends JFrame{
 		setLocationRelativeTo( null );
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.blue);
 		panel.setLayout(null);
 		JPanel panelInferior = new JPanel(new FlowLayout());
+		panelInferior.setBackground(Color.green);
 		
 		lUsuario = new JLabel("Usuario");
 		lUsuario.setBounds(270, 200, 80, 25);
@@ -48,7 +50,7 @@ public class VentanaRegistrarse extends JFrame{
 		tfUsuario.setBounds(330, 200, 160, 25);
 		panel.add(tfUsuario);
 		
-		lPasword = new JLabel("Pasword");
+		lPasword = new JLabel("Password");
 		lPasword.setBounds(270, 250, 80, 25);
 		panel.add(lPasword);
 		
@@ -56,7 +58,7 @@ public class VentanaRegistrarse extends JFrame{
 		tfPasword.setBounds(330, 250, 190, 25);
 		panel.add(tfPasword);
 		
-		lRPasword = new JLabel("Pasword");
+		lRPasword = new JLabel("Password");
 		lRPasword.setBounds(270, 300, 80, 25);
 		panel.add(lRPasword);
 		

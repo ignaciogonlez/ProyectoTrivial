@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import main.Main;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,12 +40,15 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panelCentral = new JPanel(new BorderLayout());
 		panelCentral.setBackground(Color.yellow);
 		JPanel panelInferior = new JPanel(new FlowLayout());
+		JPanel panelSuperior = new JPanel(new BorderLayout());
+		
 		//PanelCentral
 		JLabel lMensaje = new JLabel("                     PREGUNTADOS");
 		lMensaje.setForeground(Color.RED);
 		lMensaje.setFont(new Font("Serif", Font.PLAIN, 44));
-		panelCentral.add(lMensaje);
-		getContentPane().add(panelCentral,"Center");
+		panelSuperior.add(lMensaje);
+		getContentPane().add(panelSuperior,"North");
+		
 		//PanelInferior
 		bInicio = new JButton("Iniciar Sesión");
 		panelInferior.add(bInicio);
@@ -73,7 +77,11 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		
-		
+		//ETIQUETA IMAGEN
+		JLabel etiquetaImg = new JLabel(new ImageIcon("Trvial.jpg"));
+		etiquetaImg.setBounds(10, 20, 512, 512);
+		panelCentral.add(etiquetaImg);
+		getContentPane().add(panelCentral,"Center");
 		
 	}
 
