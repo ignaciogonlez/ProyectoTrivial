@@ -28,6 +28,15 @@ public class VentanaInicioSesion extends JFrame{
 	JTextField TfPasword;
 	
 	public VentanaInicioSesion() {
+		
+		//FondoPanel fondo = new FondoPanel();
+		//fondo.setImagen("/fotos/trivial2.jpg");
+		//this.setContentPane(fondo);
+		
+		
+		
+		
+		
 		setTitle( "Inicio sesion" );
 		setSize( 800, 600 );
 		setLocationRelativeTo( null );
@@ -76,7 +85,7 @@ public class VentanaInicioSesion extends JFrame{
 				//inicioSesion();
 			}
 		});
-		
+
 	}
 	
 	/** 
