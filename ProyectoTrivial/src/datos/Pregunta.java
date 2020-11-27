@@ -11,7 +11,7 @@ public class Pregunta implements Serializable {
 	
 	private String pregunta;
 	private int tiempo;
-	ArrayList<String>  = new ArrayList<String>();
+
 	public Pregunta(String pregunta) {
 		this.pregunta = pregunta;
 	}
