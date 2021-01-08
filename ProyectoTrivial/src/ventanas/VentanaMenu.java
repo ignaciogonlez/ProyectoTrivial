@@ -74,14 +74,24 @@ public class VentanaMenu extends JFrame{
 	});
 	bJugar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			(new Thread() {
+				@Override
+				public void run() {
+					Main.getGestorVentanas().getVentanaCarga().lanzaCliente();
+				}
+			}).start();
 			Main.getGestorVentanas().getVentanaCarga().setVisible(true);
-			dispose();
 		}
 	});
 	bcrearPartida.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			(new Thread() {
+				@Override
+				public void run() {
+					Main.getGestorVentanas().getVentanaCargaServidor().lanzaServidor();
+				}
+			}).start();
 			Main.getGestorVentanas().getVentanaCargaServidor().setVisible(true);
-			dispose();	
 		}
 	});
 	}

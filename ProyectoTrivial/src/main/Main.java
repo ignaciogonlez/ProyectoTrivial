@@ -1,6 +1,5 @@
 package main;
 
-
 public class Main {
 	
 	private static GestorVentanas gestorVentanas;
