@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Bombardeo extends Juego implements Serializable{
 
-	public Bombardeo(int tiempo, ArrayList<Pregunta> preguntas) {
+	public Bombardeo(int tiempo, ArrayList<Pregunta> preguntas,int time) {
 		super(tiempo);
 	}
 
