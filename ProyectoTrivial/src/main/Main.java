@@ -1,5 +1,7 @@
 package main;
 
+import datos.Usuario;
+
 public class Main {
 	
 	private static GestorVentanas gestorVentanas;
@@ -10,6 +12,9 @@ public class Main {
 		sistema = new Sistema();
 		gestorVentanas = new GestorVentanas();
 		gestorVentanas.getVentanaPrincipal().setVisible(true);
+		for (Usuario u : sistema.getListaUsuarios()) {
+			System.out.println(u);
+		} 
 
 	}
 	

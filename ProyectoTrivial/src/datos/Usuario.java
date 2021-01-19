@@ -17,4 +17,7 @@ public class Usuario {
 	public String getPassword() {
 		return this.password;
 	}
+	public String toString() {
+		return nombre;
+	}
 }

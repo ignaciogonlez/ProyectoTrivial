@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
+import Basededatos.conexionbasededatos;
 import datos.Pregunta;
 import datos.Usuario;
 
@@ -12,6 +13,7 @@ import datos.Usuario;
 public class Sistema {
 	ArrayList<Usuario> listaUsuarios;
 	ArrayList<Pregunta> listaPreguntas;
+	conexionbasededatos bd = new conexionbasededatos();
 	
 	public Sistema() {
 		listaUsuarios = new ArrayList<Usuario>();
@@ -25,5 +27,8 @@ public class Sistema {
 	}
 	public void addUsuario(Usuario u) {
 		listaUsuarios.add(u);
+	}
+	public conexionbasededatos getbd() {
+		return bd;
 	}
 }
