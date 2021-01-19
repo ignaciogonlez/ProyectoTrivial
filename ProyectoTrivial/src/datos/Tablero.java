@@ -1,9 +1,16 @@
 package datos;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import ventanas.VentanaTablero;
 
 public class Tablero extends JFrame{
 	
@@ -11,13 +18,15 @@ public class Tablero extends JFrame{
 	Jugador j2;
 	Jugador j3;
 	Jugador j4;
-	
+	VentanaTablero ventana;
 	public Tablero() {
-		setSize(800, 600);
+		ventana= new VentanaTablero();
+		setSize(626, 508);
 		setTitle("Tablero de juego");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
+		
 		
 		j1 = new Jugador(500, 100, Color.RED);
 		j2 = new Jugador(600, 100, Color.DARK_GRAY);
@@ -37,10 +46,5 @@ public class Tablero extends JFrame{
 	     g.dispose();
 	     
 	     
-	}
-	
-	public static void main(String[] args) {
-		Tablero t = new Tablero();
-	}
-	
+	}	
 }
