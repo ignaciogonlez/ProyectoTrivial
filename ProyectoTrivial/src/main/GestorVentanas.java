@@ -7,6 +7,7 @@ import ventanas.VentanaInicioSesion;
 import ventanas.VentanaMenu;
 import ventanas.VentanaPrincipal;
 import ventanas.VentanaRegistrarse;
+import ventanas.VentanaCargaServidor;
 
 /** 
  * Clase para el control de flujo de ventanas
@@ -20,6 +21,7 @@ public class GestorVentanas {
 	VentanaAmigos ventanaAmigos;
 	VentanaClasificacion ventanaClasificacion;
 	VentanaCarga ventanaCarga;
+	VentanaCargaServidor ventanaCargaServidor;
 	
 	public GestorVentanas() {
 		ventanaPrincipal = new VentanaPrincipal();
@@ -29,6 +31,7 @@ public class GestorVentanas {
 		ventanaAmigos = new VentanaAmigos();
 		ventanaClasificacion = new VentanaClasificacion();
 		ventanaCarga = new VentanaCarga();
+		ventanaCargaServidor = new VentanaCargaServidor();
 	}
 	public VentanaPrincipal getVentanaPrincipal() {
 		return ventanaPrincipal;
@@ -50,5 +53,8 @@ public class GestorVentanas {
 	}
 	public VentanaCarga getVentanaCarga() {
 		return ventanaCarga;
+	}
+	public VentanaCargaServidor getVentanaCargaServidor() {
+		return ventanaCargaServidor;
 	}
 }

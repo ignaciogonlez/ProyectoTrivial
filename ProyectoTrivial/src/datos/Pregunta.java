@@ -10,8 +10,15 @@ import java.util.ArrayList;
 public class Pregunta implements Serializable {
 	
 	private String pregunta;
+
 	
 	public Pregunta(String pregunta, ArrayList<Respuesta> respuesta) {
 		this.pregunta = pregunta ;
+	}
+	private int tiempo;
+
+	public Pregunta(String pregunta) {
+		this.pregunta = pregunta;
+
 	}
 }

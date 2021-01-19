@@ -19,7 +19,8 @@ public class VentanaMenu extends JFrame{
 	JButton bAmigos;
 	JButton bSalir;
 	
-	JButton bJugar;  //boton para iniciar una partida
+	JButton bJugar;  //boton para unirse a una partida
+	JButton bcrearPartida;   //boton para crear partida
 	
 	public VentanaMenu() {
 	
@@ -38,9 +39,20 @@ public class VentanaMenu extends JFrame{
 	panelInferior.add(bSalir);
 	getContentPane().add(panelInferior,"South");
 	
-	bJugar = new JButton("JUGAR");
-	getContentPane().add(bJugar, "Center");
+	FondoPanel fondo = new FondoPanel();
+	JPanel panelCentral = new JPanel(new FlowLayout());
+	fondo.setImagen("/fotos/trivial2.jpg");
+	getContentPane().add(fondo, "Center");
+	
+	bcrearPartida = new JButton("Crear Partida");
+	panelCentral.add(bcrearPartida);
+	bcrearPartida.setBackground(Color.orange);
+	
+	bJugar = new JButton("Jugar");
+	panelCentral.add(bJugar);
 	bJugar.setBackground(Color.green);
+	getContentPane().add(panelCentral,"North");
+
 	
 	bClasificacion.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -62,10 +74,25 @@ public class VentanaMenu extends JFrame{
 	});
 	bJugar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			(new Thread() {
+				@Override
+				public void run() {
+					Main.getGestorVentanas().getVentanaCarga().lanzaCliente();
+				}
+			}).start();
 			Main.getGestorVentanas().getVentanaCarga().setVisible(true);
-			dispose();
 		}
-});
-	
+	});
+	bcrearPartida.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			(new Thread() {
+				@Override
+				public void run() {
+					Main.getGestorVentanas().getVentanaCargaServidor().lanzaServidor();
+				}
+			}).start();
+			Main.getGestorVentanas().getVentanaCargaServidor().setVisible(true);
+		}
+	});
 	}
 }
