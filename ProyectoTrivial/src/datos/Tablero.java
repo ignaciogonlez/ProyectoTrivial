@@ -46,5 +46,9 @@ public class Tablero extends JFrame{
 	     g.dispose();
 	     
 	     
-	}	
+	}
+
+		
+	
+	
 }
