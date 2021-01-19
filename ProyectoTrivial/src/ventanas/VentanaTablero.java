@@ -9,7 +9,6 @@ import javax.swing.*;
 public class VentanaTablero extends JFrame{
 
 	FondoPanel fondo = new FondoPanel();
-	
 	public VentanaTablero() {
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		setTitle( "Tablero" );
