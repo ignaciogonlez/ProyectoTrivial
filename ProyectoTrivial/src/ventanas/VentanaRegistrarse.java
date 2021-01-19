@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import datos.Usuario;
 import main.Main;
 
 /** 
@@ -89,7 +92,11 @@ public class VentanaRegistrarse extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (registroCorrecto()) {
 					String usuario = tfUsuario.getText();
-					Main.getSistema().incluirUsuario(usuario); 
+					String password = tfPasword.getText();
+					ArrayList<Date> partidas = new ArrayList<Date>();
+					Usuario usur = new Usuario(usuario, password,partidas);
+					//Main.getSistema().getListaUsuarios().add(usur);
+					//Main.getSistema().addUsuario(usur);
 					dispose();
 				}
 			}
