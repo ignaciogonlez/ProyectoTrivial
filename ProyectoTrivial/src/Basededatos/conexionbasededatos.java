@@ -124,34 +124,25 @@ public class conexionbasededatos {
 			return false;
 		}
 	}
-	public void insertarRespuestas() {
+	public void insertarRespuestas(ArrayList<Pregunta> preguntas) {
+		String sentSQL = "";
 		try {
-			String sentSQL = "select * from Preguntas";
-			ResultSet rs = stmt.executeQuery( sentSQL );
-			int idPregunta=0;
-			while (rs.next()) {
-				idPregunta= rs.getInt("Id");
-				Sistema sis = new Sistema();
-				sis.insertarPreguntas();
-				String pregunta = rs.getString("pregunta");
-					for (Pregunta pr: sis.getListaPreguntas()) {
-						if(pr.toString().equals(pregunta)) {
-							for(Respuesta res: pr.getListaRespuesta()) {
-								Boolean correcta = res.getCorrecta();
-									sentSQL = "insert into Respuestas (IdPregunta, respuesta, correcta) values (" +
-										"'" + idPregunta + "', " +   
-										"'" + res.toString() + "', " +   
-										"'" + Boolean.toString(correcta)+ "'" +   
-										")";
-										stmt.executeUpdate( sentSQL );
-							}
-						}else {
-							System.out.println("nipa");
-						}
-					}
+			int numero = 0;
+			for (Pregunta preg : preguntas) {
+				numero = numero+1;
+				for(Respuesta res: preg.getListaRespuesta()) {
+					
+					sentSQL = "insert into Respuestas (IdPregunta,respuesta,correcta) values (" +
+							"'" + numero + "'," + 
+							"'" + res.toString() + "'," + 
+							"'" + Boolean.toString(res.getCorrecta()) + "'" +   
+							");";
+						stmt.executeUpdate( sentSQL );
+						
+				}
 			}
 			
-		}catch(SQLException e) {
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		
@@ -175,14 +166,19 @@ public class conexionbasededatos {
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM RESPUESTAS");
 			while(rs.next()) {
-				System.out.println(rs.getInt("Id"));
+				System.out.println(rs.getInt("Id")+rs.getString("respuesta")+rs.getString("correcta")+ rs.getInt("IdPregunta"));
 			}
-			
-			System.out.println("Las preguntas si");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+	}
+	public void eliminar(){
+		String sentSQL = "drop table Respuestas";
+		try {
+			stmt.executeUpdate(sentSQL);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
