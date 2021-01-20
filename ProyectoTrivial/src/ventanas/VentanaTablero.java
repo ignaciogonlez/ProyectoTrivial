@@ -25,7 +25,7 @@ public class VentanaTablero extends JFrame{
 		fondo.setImagen("/fotos/foto_fondo.jpg");
 		this.setContentPane(fondo);
 		
-		j1 = new Jugador(200, 160, Color.RED);
+		j1 = new Jugador(200, 180, Color.RED);
 		j2 = new Jugador(100, 130, Color.DARK_GRAY);
 		j3 = new Jugador(100, 100, Color.BLUE);
 		j4 = new Jugador(100, 80, Color.YELLOW);	
