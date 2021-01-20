@@ -37,8 +37,8 @@ public class Jugador{
     	return y;
     }
     
-    public void set(float x) {
-    	this.x = x;
+    public void sety(float y) {
+    	this.y = y;
     }
      
 	public void paint(Graphics g) {
