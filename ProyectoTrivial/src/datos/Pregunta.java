@@ -21,4 +21,7 @@ public class Pregunta implements Serializable {
 		this.pregunta = pregunta;
 
 	}
+	public String toString() {
+		return pregunta;
+	}
 }

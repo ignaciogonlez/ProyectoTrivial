@@ -2,9 +2,14 @@ package Basededatos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
+
+import datos.Pregunta;
+import main.Main;
 
 
 
@@ -92,7 +97,7 @@ public class conexionbasededatos {
 	public boolean insertarUsuarios(String usuario, String password) {
 		String sentSQL = "";
 		try {
-			sentSQL = "insert into Tipo (nombre, valor, fechaUltModif) values (" +
+			sentSQL = "insert into Usuarios (nombre, password) values (" +
 					"'" + usuario + "', " +   
 					"'" + password + "', " +
 					")";
@@ -102,11 +107,21 @@ public class conexionbasededatos {
 			return false;
 		}
 	}
-	/**
-	public static boolean insertarPreguntas( Statement st) {
+	
+	public boolean insertarPreguntas(ArrayList<Pregunta> preguntas) {
+		String sentSQL = "";
+		try {
+			for (Pregunta preg : preguntas) {
+				sentSQL = "insert into Preguntas (pregunta) values (" +
+					"'" + preg.toString() + "', " +   
+					")";
+				stmt.executeUpdate( sentSQL );
+			}
+				return false;
+		}catch (SQLException e) {
+			return false;
 		}
-	public static boolean updateValor( Statement st) {
-	*/
+	}
 	
 
 }

@@ -15,7 +15,6 @@ public class VentanaTablero extends JFrame{
 	Jugador j3;
 	Jugador j4;
 	FondoPanel fondo = new FondoPanel();
-	
 	public VentanaTablero() {
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		setTitle( "Tablero" );
