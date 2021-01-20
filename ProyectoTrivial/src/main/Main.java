@@ -15,9 +15,11 @@ public class Main {
 		gestorVentanas = new GestorVentanas();
 		gestorVentanas.getVentanaPrincipal().setVisible(true);
 		sistema.bd.inicioBD("TrivialBD");
-		sistema.bd.crearTablasBD();
-		sistema.insertarPreguntas();
-		sistema.bd.insertarPreguntas(sistema.listaPreguntas);
+//		sistema.insertarPreguntas();
+//		sistema.bd.verPreguntas();
+//		sistema.bd.insertarPreguntas(sistema.listaPreguntas);
+		//sistema.bd.insertarRespuestas();
+		sistema.bd.verRespuestas();
 	} 
 	
 	public static GestorVentanas getGestorVentanas() {

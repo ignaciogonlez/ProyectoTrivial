@@ -207,7 +207,7 @@ public class Sistema {
 		respuestas3.add(respuesta3a);
 		respuestas3.add(respuesta3a);
 		respuestas3.add(respuesta3a);
-		pregunta3 = new Pregunta("¿Quién escribió 'Azazel'? ",respuestas3);
+		pregunta3 = new Pregunta("¿Quién escribió Azazel? ",respuestas3);
 		listaPreguntas.add(pregunta3);
 		
 		respuesta4a = new Respuesta("Estados Unidos", false);

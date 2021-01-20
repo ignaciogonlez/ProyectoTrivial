@@ -10,10 +10,12 @@ import java.util.ArrayList;
 public class Pregunta implements Serializable {
 	
 	private String pregunta;
-
+	private  ArrayList<Respuesta> respuestas;
 	
-	public Pregunta(String pregunta, ArrayList<Respuesta> respuesta) {
+	
+	public Pregunta(String pregunta, ArrayList<Respuesta> respuestas) {
 		this.pregunta = pregunta ;
+		this.respuestas= respuestas;
 	}
 	private int tiempo;
 
@@ -23,5 +25,8 @@ public class Pregunta implements Serializable {
 	}
 	public String toString() {
 		return pregunta;
+	}
+	public ArrayList<Respuesta> getListaRespuesta(){
+		return respuestas;
 	}
 }

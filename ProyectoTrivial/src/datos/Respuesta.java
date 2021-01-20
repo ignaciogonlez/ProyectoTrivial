@@ -14,4 +14,7 @@ public class Respuesta {
 		public Boolean getCorrecta() {
 			return correcta;
 		}
+		public String toString() {
+			return respuesta;
+		}
 }

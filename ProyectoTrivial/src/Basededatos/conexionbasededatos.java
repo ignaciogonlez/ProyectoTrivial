@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 import datos.Pregunta;
+import datos.Respuesta;
 import main.Main;
+import main.Sistema;
 
 
 
@@ -39,33 +41,31 @@ public class conexionbasededatos {
 		
 		try {
 			String stat = "create table if not exists Usuarios " +
-					"(id integer primary key autoincrement" +	//Identificador del usuario
-					"nombre varchar(40)" + 						//Nombre del usuario
+					"(nombre varchar(40) primary key, " +	//Identificador del usuario						//Nombre del usuario
 					"password varchar(50)"+						//Clave del usuario	
 					");";
 				stmt.executeUpdate( stat );
 				stat = "create table if not exists Sesiones " +
-						"(id integer " +							//Clave externa del usuario
-						"fecha varchar(10)"+						//Fecha de la sesion (cambiar a string con format)
-						"NumSesiones integer"+						//Numero de sesiones del usuario
+						"(nombre varchar(40)," +							//Clave externa del usuario
+						"fecha varchar(10) primary key"+							//Fecha de la sesion (cambiar a string con format)					//Numero de sesiones del usuario
 						");";
 				stmt.executeUpdate( stat );
-				stat = "create table if not exits Preguntas " +
-						"(Id integer primary key autoincrement" +	//Identificador de la pregunta
+				stat = "create table if not exists Preguntas " +
+						"(Id integer primary key autoincrement," +	//Identificador de la pregunta
 						"pregunta varchar (100)"+					//Pregunta
 						");";
 				stmt.executeUpdate(stat);
-				stat = "create table if not exits Respuestas " +
-						"(id integer primary key autoincrement" +	//Identificador de la respuesta
-						"(IdPregunta integer" +						//Clave externa de pregunta 
-						" respuesta varchar(50)"+					//Respuesta
+				stat = "create table if not exists Respuestas " +
+						"(id integer primary key autoincrement," +	//Identificador de la respuesta
+						"IdPregunta integer," +						//Clave externa de pregunta 
+						" respuesta varchar(50),"+					//Respuesta
 						"correcta varchar(10)"+						//Si la respuesta es la correcta
 						");";
 				stmt.executeUpdate(stat);
 				
-			
+			System.out.println("Las tablas han sido creadas corretamente");
 		}catch(SQLException e) {
-			
+			e.printStackTrace();
 		}
 	}
 	/**
@@ -113,15 +113,76 @@ public class conexionbasededatos {
 		try {
 			for (Pregunta preg : preguntas) {
 				sentSQL = "insert into Preguntas (pregunta) values (" +
-					"'" + preg.toString() + "', " +   
-					")";
+					"'" + preg.toString() + "'" +   
+					");";
 				stmt.executeUpdate( sentSQL );
+				System.out.println("funciona");
 			}
 				return false;
 		}catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
+	public void insertarRespuestas() {
+		try {
+			String sentSQL = "select * from Preguntas";
+			ResultSet rs = stmt.executeQuery( sentSQL );
+			int idPregunta=0;
+			while (rs.next()) {
+				idPregunta= rs.getInt("Id");
+				Sistema sis = new Sistema();
+				sis.insertarPreguntas();
+				String pregunta = rs.getString("pregunta");
+					for (Pregunta pr: sis.getListaPreguntas()) {
+						if(pr.toString().equals(pregunta)) {
+							for(Respuesta res: pr.getListaRespuesta()) {
+								Boolean correcta = res.getCorrecta();
+									sentSQL = "insert into Respuestas (IdPregunta, respuesta, correcta) values (" +
+										"'" + idPregunta + "', " +   
+										"'" + res.toString() + "', " +   
+										"'" + Boolean.toString(correcta)+ "'" +   
+										")";
+										stmt.executeUpdate( sentSQL );
+							}
+						}else {
+							System.out.println("nipa");
+						}
+					}
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
-
+	public void verPreguntas() {
+		try {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM PREGUNTAS");
+			while(rs.next()) {
+				System.out.println(rs.getInt("Id"));
+			}
+			
+			System.out.println("Las preguntas si");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void verRespuestas() {
+		try {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM RESPUESTAS");
+			while(rs.next()) {
+				System.out.println(rs.getInt("Id"));
+			}
+			
+			System.out.println("Las preguntas si");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
