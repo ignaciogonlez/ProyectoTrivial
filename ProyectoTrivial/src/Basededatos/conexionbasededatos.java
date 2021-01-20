@@ -208,10 +208,8 @@ public class conexionbasededatos {
 	 * @return Devuelve una pregunta aleatoria
 	 * @throws SQLException
 	 */
-	public String preguntaAleatoria() throws SQLException {
-		Random r = new Random();
-		int id = r.nextInt(20);
-		String sentSQL = "select pregunta from Preguntas where Id= "+ id;	
+	public String preguntaAleatoria(int id) throws SQLException {
+		String sentSQL = "select * from Preguntas where Id= "+ id;	
 		ResultSet rs = stmt.executeQuery(sentSQL);
 		return rs.getString("pregunta");
 	}

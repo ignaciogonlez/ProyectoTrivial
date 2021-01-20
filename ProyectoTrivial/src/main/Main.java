@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import Basededatos.conexionbasededatos;
 import datos.Usuario;
+import ventanas.VentanaPregunta;
 
 public class Main {
 	
@@ -17,7 +18,7 @@ public class Main {
 		gestorVentanas = new GestorVentanas();
 		gestorVentanas.getVentanaPrincipal().setVisible(true);
 		sistema.bd.inicioBD("TrivialBD");
-		sistema.bd.respuestasPregunta(1);
+		VentanaPregunta v = new VentanaPregunta();
 	} 
 	
 	public static GestorVentanas getGestorVentanas() {
