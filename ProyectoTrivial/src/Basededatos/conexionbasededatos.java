@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 
 import datos.Pregunta;
@@ -93,13 +94,18 @@ public class conexionbasededatos {
 		}
 	}
 	
-	
+	/**
+	 * Metodo para insertar nuevos usuario en la BD
+	 * @param usuario nombre del usuario
+	 * @param password clave del usuario
+	 * @return
+	 */
 	public boolean insertarUsuarios(String usuario, String password) {
 		String sentSQL = "";
 		try {
 			sentSQL = "insert into Usuarios (nombre, password) values (" +
 					"'" + usuario + "', " +   
-					"'" + password + "', " +
+					"'" + password + "'" +
 					")";
 			stmt.executeUpdate( sentSQL );
 			return true;
@@ -108,7 +114,12 @@ public class conexionbasededatos {
 		}
 	}
 	
-	public boolean insertarPreguntas(ArrayList<Pregunta> preguntas) {
+	/**
+	 * Metodo para añadir preguntas a través de un arrayList de preguntas a la tabla preguntas
+	 * @param preguntas array de preguntas creado en la clase sistema 
+	 * @return
+	 */
+	public void insertarPreguntas(ArrayList<Pregunta> preguntas) {
 		String sentSQL = "";
 		try {
 			for (Pregunta preg : preguntas) {
@@ -118,12 +129,15 @@ public class conexionbasededatos {
 				stmt.executeUpdate( sentSQL );
 				System.out.println("funciona");
 			}
-				return false;
 		}catch (SQLException e) {
 			e.printStackTrace();
-			return false;
 		}
 	}
+	
+	/**
+	 * Metodo para añadir respuestas a través de un arrayList de preguntas a la tabla preguntas
+	 * @param preguntas preguntas array de preguntas creado en la clase sistema
+	 */
 	public void insertarRespuestas(ArrayList<Pregunta> preguntas) {
 		String sentSQL = "";
 		try {
@@ -148,6 +162,9 @@ public class conexionbasededatos {
 		
 	}
 	
+	/**
+	 * Metodo para visualizar preguntas en consola
+	 */
 	public void verPreguntas() {
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM PREGUNTAS");
@@ -157,11 +174,14 @@ public class conexionbasededatos {
 			
 			System.out.println("Las preguntas si");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
+	
+	/**
+	 * Metodo para visualizar respuestas en consola
+	 */
 	public void verRespuestas() {
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM RESPUESTAS");
@@ -169,10 +189,13 @@ public class conexionbasededatos {
 				System.out.println(rs.getInt("Id")+rs.getString("respuesta")+rs.getString("correcta")+ rs.getInt("IdPregunta"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Metodo para eliminar la tabla respuestas
+	 */
 	public void eliminar(){
 		String sentSQL = "drop table Respuestas";
 		try {
@@ -180,5 +203,35 @@ public class conexionbasededatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	/**
+	 * @return Devuelve una pregunta aleatoria
+	 * @throws SQLException
+	 */
+	public String preguntaAleatoria() throws SQLException {
+		Random r = new Random();
+		int id = r.nextInt(20);
+		String sentSQL = "select pregunta from Preguntas where Id= "+ id;	
+		ResultSet rs = stmt.executeQuery(sentSQL);
+		return rs.getString("pregunta");
+	}
+	
+	/**
+	 * Devuelve las respuestas de la pregunta asociada
+	 * @param id de la pregunta que tiene asociadas unas respuestas
+	 * @return lista respuestas
+	 * @throws SQLException
+	 */
+	public String[] respuestasPregunta(int id) throws SQLException {
+		String[] listaRespuestas = new String[4];
+		String sentSQL = "select respuesta from Respuestas where IdPregunta= "+ id;
+		ResultSet rs = stmt.executeQuery(sentSQL);
+		int numero = 0;
+		while (rs.next()) {
+			String respuesta = rs.getString("respuesta");
+			listaRespuestas[numero]= respuesta;
+			numero=numero+1;
+		}
+		return listaRespuestas;
 	}
 }
