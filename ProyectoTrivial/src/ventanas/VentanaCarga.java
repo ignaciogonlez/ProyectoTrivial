@@ -14,12 +14,14 @@ import main.Main;
 
 public class VentanaCarga extends JFrame {
 	
-	private static String HOST = "localhost";  //IP de conexión para la comunicación
-	private static int PUERTO = 3000; //Puerto de conexión
+	private static String HOST = "localhost";  //IP de conexiï¿½n para la comunicaciï¿½n
+	private static int PUERTO = 3000; //Puerto de conexiï¿½n
 	private JTextArea taEstado = new JTextArea();
 	private PrintWriter outputAServer;
     private boolean finComunicacion = false;
     private String nombre;
+    String numeroC = "0"; //Numero de cliente que manda el servidor
+    int numA = 0;
 
 	public VentanaCarga() {
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -48,10 +50,30 @@ public class VentanaCarga extends JFrame {
 	
 	 public void lanzaCliente() {
 	        try (Socket socket = new Socket( HOST, PUERTO )) {
+	        	System.out.println("cliente");
 	            BufferedReader inputDesdeServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	            outputAServer = new PrintWriter(socket.getOutputStream(), true);
-	            do { // Ciclo de lectura desde el servidor hasta que acabe la comunicación
-	            	//TODO
+	            do { // Ciclo de lectura desde el servidor hasta que acabe la comunicaciï¿½n
+	            	String feedback = inputDesdeServer.readLine();
+	            	if(feedback.equals( "Pregunta" )){
+	            		(new Thread() {
+	        				@Override
+	        				public void run() {
+	        					System.out.println("saca");
+	        					VentanaPregunta ventanaPregunta = new VentanaPregunta();
+	        					while(!ventanaPregunta.getCorrecta().equals("")){
+	        						if(ventanaPregunta.getCorrecta().equals("true")){
+	        							break;
+	        						}
+	        						if(ventanaPregunta.getCorrecta().equals("false")){
+	        							try {Thread.sleep(5000); } catch (InterruptedException e) {}
+	        							outputAServer.println("false");
+	        							break;
+	        						}
+	        					}
+	        				}
+	        			}).start();
+	            	}
 	            } while (!finComunicacion);
 	        } catch (IOException e) {
          	taEstado.append( "Error en cliente: " + e.getMessage() + "\n" );

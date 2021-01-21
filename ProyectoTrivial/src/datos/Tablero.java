@@ -19,6 +19,8 @@ public class Tablero extends JFrame{
 	Jugador j3;
 	Jugador j4;
 	VentanaTablero ventana;
+	Graphics g;
+	
 	public Tablero() {
 		ventana= new VentanaTablero();
 		setSize(626, 508);
@@ -38,6 +40,8 @@ public class Tablero extends JFrame{
 	public void paint(Graphics g) {
 	     super.paint(g);
 	     
+	     this.g = g;
+	     
 	     j1.paint(g);
 	     j2.paint(g);
 	     j3.paint(g);
@@ -45,10 +49,6 @@ public class Tablero extends JFrame{
 	     
 	     g.dispose();
 	     
-	     
 	}
-
-		
-	
 	
 }

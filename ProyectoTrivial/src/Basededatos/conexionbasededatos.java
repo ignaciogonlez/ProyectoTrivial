@@ -232,4 +232,48 @@ public class conexionbasededatos {
 		}
 		return listaRespuestas;
 	}
+	
+
+/**
+
+	 * método para comprobar si existe el usuario que se loggea en la bd
+
+	 * @param nombre textField del nombre
+
+	 * @param password textField del password
+
+	 * @return correcto si está en la bd
+
+	 * @throws SQLException
+
+	 */
+
+	public boolean inicioCorrecto(String nombre, String password) throws SQLException {
+
+		boolean correcto= false;
+
+		String sentSQL = "select * from Usuarios";
+
+		ResultSet rs = stmt.executeQuery(sentSQL);
+
+		while (rs.next()) {
+
+			String nombre_bd = rs.getString("nombre");
+
+			String password_bd = rs.getString("password");
+
+			if(nombre_bd.equals(nombre)) {
+
+				correcto = true;
+
+			}
+
+		}
+
+		return correcto;
+
+	}
+
+
 }
+
