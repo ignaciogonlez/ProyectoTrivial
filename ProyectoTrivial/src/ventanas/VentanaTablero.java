@@ -107,71 +107,70 @@ public class VentanaTablero extends JFrame{
 		System.out.println(v4.getN());
 		
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 1){
+			if(v1.getN().equals(s) && numA1 == 0){
 				numA1++;
-				
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(400, 480, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 2){
+			if(v1.getN().equals(s) && numA1 == 1){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(100, 480, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 3){
+			if(v1.getN().equals(s) && numA1 == 2){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 310, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 4){
+			if(v1.getN().equals(s) && numA1 == 3){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 310, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 5){
+			if(v1.getN().equals(s) && numA1 == 4){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 310, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 6){
+			if(v1.getN().equals(s) && numA1 == 5){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 310, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 7){
+			if(v1.getN().equals(s) && numA1 == 6){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 310, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 8){
+			if(v1.getN().equals(s) && numA1 == 7){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 310, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 9){
+			if(v1.getN().equals(s) && numA1 == 8){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 310, 1);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA1 == 10){
+			if(v1.getN().equals(s) && numA1 == 9){
 				numA1++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 310, 1);
 				break;
@@ -179,146 +178,146 @@ public class VentanaTablero extends JFrame{
 		}
 		
 		
-		
+		//Jugador2
 		
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 1){
+			if(v2.getN().equals(s) && numA2 == 0){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(400, 450, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 2){
+			if(v2.getN().equals(s) && numA2 == 1){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(100, 450, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 3){
+			if(v2.getN().equals(s) && numA2 == 2){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 280, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 4){
+			if(v2.getN().equals(s) && numA2 == 3){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 280, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 5){
+			if(v2.getN().equals(s) && numA2 == 4){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 280, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 6){
+			if(v2.getN().equals(s) && numA2 == 5){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 280, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 7){
+			if(v2.getN().equals(s) && numA2 == 6){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 130, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 8){
+			if(v2.getN().equals(s) && numA2 == 7){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 130, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 9){
+			if(v2.getN().equals(s) && numA2 == 8){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 130, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA2 == 10){
+			if(v2.getN().equals(s) && numA2 == 9){
 				numA2++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 130, 2);
 				break;
 			}
 		}
 		
-		
+		//Jugador3
 		
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 1){
+			if(v3.getN().equals(s) && numA3 == 0){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(400, 420, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 2){
+			if(v3.getN().equals(s) && numA3 == 1){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(100, 420, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 3){
+			if(v3.getN().equals(s) && numA3 == 2){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 250, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 4){
+			if(v3.getN().equals(s) && numA3 == 3){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 250, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 5){
+			if(v3.getN().equals(s) && numA3 == 4){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 250, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 6){
+			if(v3.getN().equals(s) && numA3 == 5){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 250, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 7){
+			if(v3.getN().equals(s) && numA3 == 6){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 100, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 8){
+			if(v3.getN().equals(s) && numA3 == 7){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 100, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 9){
+			if(v3.getN().equals(s) && numA3 == 8){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 100, 3);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA3 == 10){
+			if(v3.getN().equals(s) && numA3 == 9){
 				numA3++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 100, 3);
 				break;
@@ -326,79 +325,96 @@ public class VentanaTablero extends JFrame{
 		}
 		
 		
-		
+		//Jugador4
 		
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 1){
+			if(v4.getN().equals(s) && numA4 == 0){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(400, 390, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 2){
+			if(v4.getN().equals(s) && numA4 == 1){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(100, 390, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 3){
+			if(v4.getN().equals(s) && numA4 == 2){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 220, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 4){
+			if(v4.getN().equals(s) && numA4 == 3){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 220, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 5){
+			if(v4.getN().equals(s) && numA4 == 4){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 280, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 6){
+			if(v4.getN().equals(s) && numA4 == 5){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 220, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 7){
+			if(v4.getN().equals(s) && numA4 == 6){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(680, 80, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 8){
+			if(v4.getN().equals(s) && numA4 == 7){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(480, 80, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 9){
+			if(v4.getN().equals(s) && numA4 == 8){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(280, 80, 2);
 				break;
 			}
 		}
 		for(String s : respuestasCorrectas){
-			if(v2.getN().equals(s) && numA4 == 10){
+			if(v4.getN().equals(s) && numA4 == 9){
 				numA4++;
 				Main.getGestorVentanas().getVentanaTablero().setPlayerPosition(150, 80, 2);
 				break;
 			}
 		}
 	}
+	if(numA1 == 10){
+		VentanaGanador vg1 = new VentanaGanador(this, 1);
+		vg1.setVisible(true);
+	}
+	if(numA2 == 10){
+		VentanaGanador vg2 = new VentanaGanador(this, 2);
+		vg2.setVisible(true);
+	}
+	if(numA3 == 10){
+		VentanaGanador vg3 = new VentanaGanador(this, 3);
+		vg3.setVisible(true);
+	}
+	if(numA4 == 10){
+		VentanaGanador vg4 = new VentanaGanador(this, 4);
+		vg4.setVisible(true);
+	}
+	
 		
 		
 		System.out.println(numA1);
