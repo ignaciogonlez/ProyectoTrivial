@@ -17,6 +17,8 @@ public class VentanaCargaServidor extends JFrame {
     ArrayList<Socket> lSockets = new ArrayList<>(); 
     ArrayList<PrintWriter> lSalidas = new ArrayList<>();
     int numCliente = 0;	//Añadimos un número de cliente para saber cuántos se conectan
+    int numComienzo = 0; //Sirve para saber si es la primera pregunta
+    int numAciertos = 0; //Aciertos que lleva cada cliente
 	
 	public VentanaCargaServidor() {
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -60,9 +62,10 @@ public class VentanaCargaServidor extends JFrame {
 		// *VARIOS CLIENTES*
 		// Como el servidor va a gestionar varios clientes, en lugar de abrir solo una conexión, abre repetidamente conexiones hasta final
 		try(ServerSocket serverSocket = new ServerSocket( PUERTO )) {
-			serverSocket.setSoTimeout( 5000 );  // Para que haya un timeout en el accept - por si cerramos la aplicación para que no se quede esperando de forma infinita
+			serverSocket.setSoTimeout( 50000 );  // Para que haya un timeout en el accept - por si cerramos la aplicación para que no se quede esperando de forma infinita
 			while (!finComunicacion) {
 				try {
+					System.out.println("servidor");
 					Socket socket = serverSocket.accept(); // Se queda esperando a una conexión con timeout
 					// *VARIOS CLIENTES*
 					// Cada vez que un cliente se conecta, se genera un HILO que hace la comunicación (la lectura) con ese cliente. Y el servidor sigue ejecutando para esperar a otro cliente
@@ -70,16 +73,175 @@ public class VentanaCargaServidor extends JFrame {
 					numCliente++;
 					Thread t = new Thread ( new Runnable() { @Override public void run() {
 						int numC = numCliente;
+						int numCom = numComienzo;
+						int numA = numAciertos;
+						System.out.println("hilo");
 						try {
-							lClientes.setText( "Cliente " + numC + " conectado" );
 							BufferedReader inputDesdeCliente = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 							PrintWriter outputACliente = new PrintWriter(socket.getOutputStream(), true);
 							lSalidas.add( outputACliente );  // Para mensajes de difusión
-							while(!finComunicacion) {  // ciclo de lectura desde el cliente hasta que acabe la comunicación
-								//TODO
+							System.out.println("c");
+							while (!finComunicacion) {  // ciclo de lectura desde el cliente hasta que acabe la comunicación
+								System.out.println("prop");
+								if(numCom==0){
+									System.out.println("h");
+									numCom = 1;
+									try {Thread.sleep(5000); } catch (InterruptedException e) {}
+									for (PrintWriter outputCl : lSalidas) {
+										System.out.println("pr");
+										outputCl.println( "Pregunta" );
+									}
+								}
+								String textoRecibido = inputDesdeCliente.readLine();
+								if(textoRecibido.equals("true")){ //Actualiza las coordenadas
+									numA++;
+									if(numA==1 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(400);
+									}
+									if(numA==1 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(400);
+									}
+									if(numA==1 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(400);
+									}
+									if(numA==1 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(400);
+									}
+									if(numA==2 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(100);
+									}
+									if(numA==2 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(100);
+									}
+									if(numA==2 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(100);
+									}
+									if(numA==2 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(100);
+									}
+									if(numA==3 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(150);
+										Main.getGestorVentanas().getVentanaTablero().getJ1().sety(310);
+									}
+									if(numA==3 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(150);
+										Main.getGestorVentanas().getVentanaTablero().getJ2().sety(280);
+									}
+									if(numA==3 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(150);
+										Main.getGestorVentanas().getVentanaTablero().getJ3().sety(250);
+									}
+									if(numA==3 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(150);
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(220);
+									}
+									if(numA==4 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(280);
+									}
+									if(numA==4 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(280);
+									}
+									if(numA==4 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(280);
+									}
+									if(numA==4 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(280);
+									}
+									if(numA==5 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(480);
+									}
+									if(numA==5 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(480);
+									}
+									if(numA==5 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(480);
+									}
+									if(numA==5 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(480);
+									}
+									if(numA==6 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(680);
+									}
+									if(numA==6 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(680);
+									}
+									if(numA==6 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(680);
+									}
+									if(numA==6 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(680);
+									}
+									if(numA==7 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().sety(160);
+									}
+									if(numA==7 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().sety(130);
+									}
+									if(numA==7 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().sety(100);
+									}
+									if(numA==7 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().sety(80);
+									}
+									if(numA==8 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(480);
+									}
+									if(numA==8 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(480);
+									}
+									if(numA==8 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(480);
+									}
+									if(numA==8 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(480);
+									}
+									if(numA==9 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(280);
+									}
+									if(numA==9 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(280);
+									}
+									if(numA==9 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(280);
+									}
+									if(numA==9 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(280);
+									}
+									if(numA==10 && numC==1){
+										Main.getGestorVentanas().getVentanaTablero().getJ1().setx(150);
+									}
+									if(numA==10 && numC==2){
+										Main.getGestorVentanas().getVentanaTablero().getJ2().setx(150);
+									}
+									if(numA==10 && numC==3){
+										Main.getGestorVentanas().getVentanaTablero().getJ3().setx(150);
+									}
+									if(numA==10 && numC==4){
+										Main.getGestorVentanas().getVentanaTablero().getJ4().setx(150);
+									}
+									//try {Thread.sleep(5000); } catch (InterruptedException e) {}
+									//Main.getGestorVentanas().getVentanaTablero().getJ1();
+									//Main.getGestorVentanas().getVentanaTablero().getJ2();
+									//Main.getGestorVentanas().getVentanaTablero().getJ3();
+									//Main.getGestorVentanas().getVentanaTablero().getJ4();
+									
+								}
+								if(textoRecibido.equals("true") && numC==1){
+									try {Thread.sleep(5000); } catch (InterruptedException e) {}
+									for (PrintWriter outputCl : lSalidas) {
+										outputCl.println( "Pregunta" );
+									}
+								}
+								if(textoRecibido.equals("false") && numC==1){
+									try {Thread.sleep(5000); } catch (InterruptedException e) {}
+									for (PrintWriter outputCl : lSalidas) {
+										outputCl.println( "Pregunta" );
+									}
+								}
 							}
+							System.out.println("d");
 							lClientes.setText( "El cliente " + numC + " se ha desconectado." );
-							socket.close();
+//							socket.close();
 							lSockets.remove( socket );
 							lSalidas.remove( outputACliente );
 						} catch(IOException e) {
@@ -92,6 +254,7 @@ public class VentanaCargaServidor extends JFrame {
 					} } );
 					t.start();
 				} catch (SocketTimeoutException e) {
+					System.out.println("lol");
 					// Timeout en socket servidor - se reintenta (en el mismo while)
 				}
 			}

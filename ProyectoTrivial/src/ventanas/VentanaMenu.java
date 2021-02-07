@@ -74,13 +74,49 @@ public class VentanaMenu extends JFrame{
 	});
 	bJugar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			dispose();
+//			//Servidor
+//			(new Thread() {
+//				@Override
+//				public void run() {
+//					Main.getGestorVentanas().getVentanaCargaServidor().lanzaServidor();
+//				}
+//			}).start();
+//			//Cliente 1
+//			(new Thread() {
+//				@Override
+//				public void run() {
+//					Main.getGestorVentanas().getVentanaCarga1().lanzaCliente();
+//				}
+//			}).start();
+//			//Cliente 2
+//			(new Thread() {
+//				@Override
+//				public void run() {
+//					Main.getGestorVentanas().getVentanaCarga2().lanzaCliente();
+//				}
+//			}).start();
+//			//Cliente 3
+//			(new Thread() {
+//				@Override
+//				public void run() {
+//					Main.getGestorVentanas().getVentanaCarga3().lanzaCliente();
+//				}
+//			}).start();
+//			//Cliente 4
+//			(new Thread() {
+//				@Override
+//				public void run() {
+//					Main.getGestorVentanas().getVentanaCarga4().lanzaCliente();
+//				}
+//			}).start();	
+			Main.getGestorVentanas().getVentanaTablero().setVisible(true);
 			(new Thread() {
 				@Override
 				public void run() {
-					Main.getGestorVentanas().getVentanaCarga().lanzaCliente();
+					Main.getGestorVentanas().getVentanaTablero().jugar();
 				}
 			}).start();
-			Main.getGestorVentanas().getVentanaCarga().setVisible(true);
 		}
 	});
 	bcrearPartida.addActionListener(new ActionListener() {

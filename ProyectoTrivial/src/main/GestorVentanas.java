@@ -1,13 +1,6 @@
 package main;
 
-import ventanas.VentanaAmigos;
-import ventanas.VentanaCarga;
-import ventanas.VentanaClasificacion;
-import ventanas.VentanaInicioSesion;
-import ventanas.VentanaMenu;
-import ventanas.VentanaPrincipal;
-import ventanas.VentanaRegistrarse;
-import ventanas.VentanaCargaServidor;
+import ventanas.*;
 
 /** 
  * Clase para el control de flujo de ventanas
@@ -20,8 +13,12 @@ public class GestorVentanas {
 	VentanaMenu ventanaMenu;
 	VentanaAmigos ventanaAmigos;
 	VentanaClasificacion ventanaClasificacion;
-	VentanaCarga ventanaCarga;
+	VentanaCarga ventanaCarga1;
+	VentanaCarga ventanaCarga2;
+	VentanaCarga ventanaCarga3;
+	VentanaCarga ventanaCarga4;
 	VentanaCargaServidor ventanaCargaServidor;
+	VentanaTablero ventanaTablero;
 	
 	public GestorVentanas() {
 		ventanaPrincipal = new VentanaPrincipal();
@@ -30,8 +27,12 @@ public class GestorVentanas {
 		ventanaMenu = new VentanaMenu();
 		ventanaAmigos = new VentanaAmigos();
 		ventanaClasificacion = new VentanaClasificacion();
-		ventanaCarga = new VentanaCarga();
+		ventanaCarga1 = new VentanaCarga();
+		ventanaCarga2 = new VentanaCarga();
+		ventanaCarga3 = new VentanaCarga();
+		ventanaCarga4 = new VentanaCarga();
 		ventanaCargaServidor = new VentanaCargaServidor();
+		ventanaTablero = new VentanaTablero();
 	}
 	public VentanaPrincipal getVentanaPrincipal() {
 		return ventanaPrincipal;
@@ -51,10 +52,22 @@ public class GestorVentanas {
 	public VentanaClasificacion getVentanaClasificacion(){
 		return ventanaClasificacion;
 	}
-	public VentanaCarga getVentanaCarga() {
-		return ventanaCarga;
+	public VentanaCarga getVentanaCarga1() {
+		return ventanaCarga1;
+	}
+	public VentanaCarga getVentanaCarga2() {
+		return ventanaCarga2;
+	}
+	public VentanaCarga getVentanaCarga3() {
+		return ventanaCarga3;
+	}
+	public VentanaCarga getVentanaCarga4() {
+		return ventanaCarga4;
 	}
 	public VentanaCargaServidor getVentanaCargaServidor() {
 		return ventanaCargaServidor;
+	}
+	public VentanaTablero getVentanaTablero(){
+		return ventanaTablero;
 	}
 }

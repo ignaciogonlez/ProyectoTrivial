@@ -98,6 +98,8 @@ public class VentanaRegistrarse extends JFrame{
 					String password = tfPasword.getText();
 					Main.getSistema().getbd().insertarUsuarios(usuario, password);
 					dispose();
+					VentanaPrincipal v = new VentanaPrincipal();
+					v.setVisible(true);
 				}
 			}
 		});
