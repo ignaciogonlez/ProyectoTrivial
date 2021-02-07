@@ -18,7 +18,8 @@ public class Main {
 		gestorVentanas = new GestorVentanas();
 		gestorVentanas.getVentanaPrincipal().setVisible(true);
 		sistema.bd.inicioBD("TrivialBD");
-		VentanaPregunta v = new VentanaPregunta();
+		
+		
 	} 
 	
 	public static GestorVentanas getGestorVentanas() {

@@ -194,6 +194,20 @@ public class conexionbasededatos {
 	}
 	
 	/**
+	 * Metodo para visualizar usuarios en consola
+	 */
+	public void verUusuarios() {
+		try {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM USUARIOS");
+			while(rs.next()) {
+				System.out.println(rs.getString("nombre"));
+			}
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+	/**
 	 * Metodo para eliminar la tabla respuestas
 	 */
 	public void eliminar(){
@@ -232,4 +246,26 @@ public class conexionbasededatos {
 		}
 		return listaRespuestas;
 	}
+	
+	/**
+	 * método para comprobar si existe el usuario que se loggea en la bd
+	 * @param nombre textField del nombre
+	 * @param password textField del password
+	 * @return correcto si está en la bd
+	 * @throws SQLException
+	 */
+	public boolean inicioCorrecto(String nombre, String password) throws SQLException {
+		boolean correcto= false;
+		String sentSQL = "select * from Usuarios";
+		ResultSet rs = stmt.executeQuery(sentSQL);
+		while (rs.next()) {
+			String nombre_bd = rs.getString("nombre");
+			String password_bd = rs.getString("password");
+			if(nombre_bd.equals(nombre)) {
+				correcto = true;
+			}
+		}
+		return correcto;
+	}
+	
 }

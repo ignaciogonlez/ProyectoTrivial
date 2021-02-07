@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -80,19 +82,20 @@ public class VentanaInicioSesion extends JFrame{
 		//Hago que entre directamente de momento
 		bEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main.getGestorVentanas().getVentanaMenu().setVisible(true);
-				dispose();
-				//inicioSesion();
+				String nombre = TfUsuario.getText();
+				String password = TfPasword.getText();
+				try {
+					if(main.Main.getSistema().getbd().inicioCorrecto(nombre, password)) {
+						Main.getGestorVentanas().getVentanaMenu().setVisible(true);
+						dispose();
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 
 	}
 	
-	/** 
-	 * Metodo para que en el caso de que el login sea correcto, es decir exista usuario, usuario y contra
-	 * coincidan... pues te lleve a la ventanaMenu sino mensaje de error
-	 */
-	private void inicioSesion() {
-		
-	}
+	
 }
