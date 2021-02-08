@@ -7,11 +7,13 @@ public class Usuario {
 	String nombre;
 	String password;
 	int puntuacion;
-	public Usuario(String nombre, String password, int puntuacion) {
+	 ArrayList<Usuario> listaAmigos;
+	
+	public Usuario(String nombre, String password, int puntuacion, ArrayList<Usuario> listaAmigos)  {
 		this.nombre=nombre;
 		this.password=password;
 		this.puntuacion = puntuacion;
-		
+		this.listaAmigos= listaAmigos;
 	}
 	public String getNombre() {
 		return this.nombre;
