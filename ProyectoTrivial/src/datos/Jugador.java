@@ -7,6 +7,8 @@ import java.awt.Rectangle;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import main.Main;
+
 
 public class Jugador{
 	
@@ -14,6 +16,7 @@ public class Jugador{
 	private float y;
 	private Rectangle rect;
 	private Color c;
+	private String[] posiciones;
 	
 	public Jugador(int x, int y, Color c) {
 		
@@ -22,8 +25,16 @@ public class Jugador{
 		this.y = y;
 		
         rect = new Rectangle(x, y, 30, 30);
+        posiciones = new String[11];
+        
+        rellenarPosiciones();
     
     }
+	
+	public void rellenarPosiciones() {
+		Main.getProperties();
+	}
+	
 	
 	public float getx() {
     	return x;

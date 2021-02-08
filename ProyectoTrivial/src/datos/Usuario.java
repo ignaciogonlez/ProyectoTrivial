@@ -1,9 +1,14 @@
 package datos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2965387468888289999L;
 	String nombre;
 	String password;
 	int puntuacion;

@@ -1,5 +1,6 @@
 package main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Basededatos.conexionbasededatos;
@@ -11,7 +12,11 @@ import datos.Usuario;
 /** 
  * Sistema para ir gestionando los datos del juego
  */
-public class Sistema {
+public class Sistema implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7357337047016998721L;
 	ArrayList<Usuario> listaUsuarios;
 	ArrayList<Pregunta> listaPreguntas;
 	conexionbasededatos bd = new conexionbasededatos();
@@ -28,7 +33,9 @@ public class Sistema {
 		return listaPreguntas;
 	}
 	public void addUsuario(Usuario u) {
+		System.out.println(u.getNombre());
 		listaUsuarios.add(u);
+		System.out.println(listaUsuarios.size());
 	}
 	public conexionbasededatos getbd() {
 		return bd;
