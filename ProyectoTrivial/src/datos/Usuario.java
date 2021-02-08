@@ -6,9 +6,11 @@ import java.util.Date;
 public class Usuario {
 	String nombre;
 	String password;
-	public Usuario(String nombre, String password, ArrayList<Date> partidas) {
+	int puntuacion;
+	public Usuario(String nombre, String password, int puntuacion) {
 		this.nombre=nombre;
 		this.password=password;
+		this.puntuacion = puntuacion;
 		
 	}
 	public String getNombre() {
@@ -19,5 +21,11 @@ public class Usuario {
 	}
 	public String toString() {
 		return nombre;
+	}
+	public int getPuntuacion() {
+		return this.puntuacion;
+	}
+	public void setPuntuacion(int suma) {
+		this.puntuacion = puntuacion+suma;
 	}
 }

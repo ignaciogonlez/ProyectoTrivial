@@ -194,7 +194,7 @@ public class conexionbasededatos {
 	/**
 	 * Metodo para visualizar usuarios en consola
 	 */
-	public void verUusuarios() {
+	public void verUsuarios() {
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM USUARIOS");
 			while(rs.next()) {
