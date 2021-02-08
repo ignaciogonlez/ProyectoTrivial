@@ -60,7 +60,7 @@ public class VentanaCarga extends JFrame {
 	        				@Override
 	        				public void run() {
 	        					System.out.println("saca");
-	        					VentanaPregunta ventanaPregunta = new VentanaPregunta();
+	        					VentanaPregunta ventanaPregunta = new VentanaPregunta(new VentanaTablero());
 	        					while(!ventanaPregunta.getCorrecta().equals("")){
 	        						if(ventanaPregunta.getCorrecta().equals("true")){
 	        							break;

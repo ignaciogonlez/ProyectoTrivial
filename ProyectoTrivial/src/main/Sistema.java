@@ -50,7 +50,7 @@ public class Sistema {
 	
 	
 	
-	/**Respuesta respuesta1a;
+	Respuesta respuesta1a;
 	Respuesta respuesta1b;
 	Respuesta respuesta1c;
 	Respuesta respuesta1d;
@@ -439,5 +439,5 @@ public class Sistema {
 		
 		
 	}
-	**/
+	
 }
