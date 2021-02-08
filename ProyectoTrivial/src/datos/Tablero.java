@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import ventanas.VentanaTablero;
 
-public class Tablero extends JFrame{
+/**public class Tablero extends JFrame{
 	
 	Jugador j1;
 	Jugador j2;
@@ -52,3 +52,4 @@ public class Tablero extends JFrame{
 	}
 	
 }
+**/

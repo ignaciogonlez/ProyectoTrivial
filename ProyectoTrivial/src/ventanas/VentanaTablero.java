@@ -1,6 +1,9 @@
 package ventanas;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.*;
 
 import datos.Jugador;
@@ -27,10 +30,7 @@ public class VentanaTablero extends JFrame{
 		fondo.setImagen("/fotos/foto_fondo.jpg");
 		this.setContentPane(fondo);
 		
-		j1 = new Jugador(700, 480, Color.RED);
-		j2 = new Jugador(700, 450, Color.DARK_GRAY);
-		j3 = new Jugador(700, 420, Color.BLUE);
-		j4 = new Jugador(700, 390, Color.YELLOW);	
+		
 	
 	}
 	
@@ -68,33 +68,36 @@ public class VentanaTablero extends JFrame{
 		return j4;
 	}
 	
-	public void setPlayerPosition(int x, int y, int j) {
+	public void jugar() {
 		
-		if(j == 1) {
-			j1.setx(x);
-			j1.sety(y);
-		}else if(j == 2) {
-			j2.setx(x);
-			j2.sety(y);
-		}else if(j == 3) {
-			j3.setx(x);
-			j3.sety(y);
-		}else{
-			j4.setx(x);
-			j4.sety(y);
+		String[] rc = {"Andres Iniesta", "Hepatitis", "Isaac Asimov", "Australia", "El día de la reina", 
+				"Mad Men", "Sunismo", "Corinthians", "1935", "1941", "cuatro", "Adrián Escudero", "Ingerida", 
+				"Hígado", "roja", "carbón", "Erótico", "Liechtenstein", "Bebés", "Colombia"};
+		
+		ArrayList<String> respuestasCorrectas = new ArrayList<String>();
+		
+		for(String s : rc) respuestasCorrectas.add(s);
+		
+		
+		j1 = new Jugador(700, 480, Color.RED, 1);
+		j2 = new Jugador(700, 450, Color.DARK_GRAY, 2);
+		j3 = new Jugador(700, 420, Color.BLUE, 3);
+		j4 = new Jugador(700, 390, Color.YELLOW, 4);	
+		
+		while(!(j1.getN() > 9) && !(j2.getN() > 9) && !(j3.getN() > 9) && !(j4.getN() > 9)) {
+			
+			VentanaPregunta vp1 = new VentanaPregunta(this);
+			VentanaPregunta vp2 = new VentanaPregunta(this);
+			VentanaPregunta vp3 = new VentanaPregunta(this);
+			VentanaPregunta vp4 = new VentanaPregunta(this);
+			
+			if(respuestasCorrectas.contains(vp1.getN())) j1.incrementarPosicion();
+			if(respuestasCorrectas.contains(vp2.getN())) j2.incrementarPosicion();
+			if(respuestasCorrectas.contains(vp3.getN())) j3.incrementarPosicion();
+			if(respuestasCorrectas.contains(vp4.getN())) j4.incrementarPosicion();
+			
+			repaint();
 		}
-		
-		repaint();
-		
 	}
-	
-	public void jugar(){
-		int numA1 = 0;
-		int numA2 = 0;
-		int numA3 = 0;
-		int numA4 = 0;
-	}
-	
-		
 	
 }

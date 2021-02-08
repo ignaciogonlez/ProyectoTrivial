@@ -17,7 +17,7 @@ public class Main {
 	
 	private static GestorVentanas gestorVentanas;
 	private static Sistema sistema;
-	private static Properties properties;
+	private static Properties properties1, properties2, properties3, properties4;
 	
 	public static void main(String[] args) throws SQLException, IOException {
 		
@@ -37,20 +37,43 @@ public class Main {
 	}
 	
 	public static void inicializarProperties() throws IOException {
-		properties = new Properties();
+		properties1 = new Properties();
+		properties2 = new Properties();
+		properties3 = new Properties();
+		properties4 = new Properties();
 		
 		try {
-			InputStream is = new FileInputStream("posiciones.properties");
-			properties.load(is);
+			InputStream is1 = new FileInputStream("posiciones1.properties");
+			properties1.load(is1);
+			
+			InputStream is2 = new FileInputStream("posiciones2.properties");
+			properties2.load(is2);
+			
+			InputStream is3 = new FileInputStream("posiciones3.properties");
+			properties3.load(is3);
+			
+			InputStream is4 = new FileInputStream("posiciones4.properties");
+			properties4.load(is4);
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static Properties getProperties() {
-		return properties;
+	public static Properties getProperties1() {
+		return properties1;
 	}
 	
+	public static Properties getProperties2() {
+		return properties2;
+	}
+	
+	public static Properties getProperties3() {
+		return properties3;
+	}
+	
+	public static Properties getProperties4() {
+		return properties4;
+	}
 	
 }

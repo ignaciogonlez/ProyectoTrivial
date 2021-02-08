@@ -114,7 +114,7 @@ public class VentanaMenu extends JFrame{
 			(new Thread() {
 				@Override
 				public void run() {
-					Main.getGestorVentanas().getVentanaTablero().jugar();
+					Main.getGestorVentanas().getVentanaTablero().jugar();;
 				}
 			}).start();
 		}
