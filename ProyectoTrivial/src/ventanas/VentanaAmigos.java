@@ -63,6 +63,7 @@ public class VentanaAmigos extends JFrame {
 	}
 
 	private void crearTabla(){
+		tAmigos = new JTable();
 		DefaultTableModel modelo = new DefaultTableModel();
 		modelo.setColumnIdentifiers(new Object[]{"Usuario", "Puntuación"});
 		try{

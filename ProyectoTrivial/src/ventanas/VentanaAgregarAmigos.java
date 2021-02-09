@@ -24,14 +24,17 @@ public class VentanaAgregarAmigos extends JFrame{
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		
 		JPanel panelSuperior = new JPanel(new FlowLayout());
+		TfBuscar = new JTextField();
+		TfBuscar.setSize(160, 25);
 		panelSuperior.add(TfBuscar);
 		bAgregar = new JButton("Agregar");
 		panelSuperior.add(bAgregar);
-		getContentPane().add(panelSuperior);
+		getContentPane().add(panelSuperior,"North");
 		
 		JPanel panelCentral = new JPanel(new FlowLayout());
+		lMensaje = new JLabel("Introduce el nombre del usuario que quieras agregar");
 		panelCentral.add(lMensaje);
-		getContentPane().add(panelCentral);
+		getContentPane().add(panelCentral,"Center");
 		
 		bAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

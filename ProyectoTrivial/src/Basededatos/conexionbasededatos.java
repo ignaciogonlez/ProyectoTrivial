@@ -307,6 +307,16 @@ public class conexionbasededatos {
 		}
 		return null;
 	}
+	
+	public Usuario sacarUsuarioActual(String nombre) throws SQLException{
+			String sql = "select * from Usuarios where nombre='" + nombre + "';";
+			ResultSet res = stmt.executeQuery(sql);
+			while (res.next()) {
+				Usuario us = new Usuario(nombre, res.getString("password"), res.getInt("puntuacion"), (ArrayList<Usuario>) res.getArray("listaAmigos"));
+				return us;
+			}
+			return null;
+	}
 
 
 
