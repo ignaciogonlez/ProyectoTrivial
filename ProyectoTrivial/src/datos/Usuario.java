@@ -35,4 +35,7 @@ public class Usuario implements Serializable{
 	public void setPuntuacion(int suma) {
 		this.puntuacion = puntuacion+suma;
 	}
+	public ArrayList<Usuario> getListaAmigos(){
+		return listaAmigos;
+	}
 }

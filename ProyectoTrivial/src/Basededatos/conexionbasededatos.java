@@ -11,6 +11,7 @@ import java.util.logging.Level;
 
 import datos.Pregunta;
 import datos.Respuesta;
+import datos.Usuario;
 import main.Main;
 import main.Sistema;
 
@@ -266,7 +267,46 @@ public class conexionbasededatos {
 		return correcto;
 	}
 	
-
+	/**
+	 * método para comprobar si existe el usuario que se loggea en la bd
+	 * @param nombre textField del nombre
+	 * @param lista lista de amigos del usuario actual para anyadirle el nuevo amigo
+	 * @return true si se ha agregado correctamente
+	 * @throws SQLException
+	 */
+	public boolean verificarYAgregarUsuario(String nombre, ArrayList<Usuario> lista) throws SQLException {
+		boolean correcto= false;
+		String sentSQL = "select * from Usuarios";
+		ResultSet rs = stmt.executeQuery(sentSQL);
+		while (rs.next()) {
+			String nombre_bd = rs.getString("nombre");
+			if(nombre_bd.equals(nombre)) {
+				correcto = true;
+				break;
+			}
+		}
+		if(correcto){
+			String sql = "select * from Usuarios where nombre='" + nombre + "';";
+			ResultSet res = stmt.executeQuery(sql);
+			while (res.next()) {
+				Usuario us = new Usuario(nombre, res.getString("password"), res.getInt("puntuacion"), (ArrayList<Usuario>) res.getArray("listaAmigos"));
+				lista.add(us);
+			}
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public ArrayList<Usuario> sacarAmigos(String nombre) throws SQLException{
+		String sentSQL = "select * from Usuarios where nombre='" + nombre + "';";
+		ResultSet rs = stmt.executeQuery(sentSQL);
+		while (rs.next()) {
+			ArrayList<Usuario> lista = (ArrayList<Usuario>) rs.getArray("listaAmigos");
+			return lista;
+		}
+		return null;
+	}
 
 
 

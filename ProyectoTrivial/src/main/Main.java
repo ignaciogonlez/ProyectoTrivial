@@ -18,6 +18,7 @@ public class Main {
 	private static GestorVentanas gestorVentanas;
 	private static Sistema sistema;
 	private static Properties properties1, properties2, properties3, properties4;
+	static Usuario usuarioActual;
 	
 	public static void main(String[] args) throws SQLException, IOException {
 		
@@ -74,6 +75,10 @@ public class Main {
 	
 	public static Properties getProperties4() {
 		return properties4;
+	}
+	
+	public static Usuario getUsuarioActual(){
+		return usuarioActual;
 	}
 	
 }

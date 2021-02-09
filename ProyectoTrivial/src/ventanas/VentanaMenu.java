@@ -62,7 +62,9 @@ public class VentanaMenu extends JFrame{
 	});
 	bAmigos.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Main.getGestorVentanas().getVentanaAmigos().setVisible(true);
+			//Main.getGestorVentanas().getVentanaAmigos().setVisible(true);
+			VentanaAmigos v = new VentanaAmigos();
+			v.setVisible(true);
 			dispose();
 		}
 	});
