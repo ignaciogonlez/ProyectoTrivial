@@ -14,7 +14,7 @@ public class Usuario implements Serializable{
 	int puntuacion;
 	 ArrayList<Usuario> listaAmigos;
 	
-	public Usuario(String nombre, String password, int puntuacion, ArrayList<Usuario> listaAmigos)  {
+	public Usuario(String nombre, String password, int puntuacion)  {
 		this.nombre=nombre;
 		this.password=password;
 		this.puntuacion = puntuacion;
@@ -34,5 +34,8 @@ public class Usuario implements Serializable{
 	}
 	public void setPuntuacion(int suma) {
 		this.puntuacion = puntuacion+suma;
+	}
+	public ArrayList<Usuario> getListaAmigos(){
+		return listaAmigos;
 	}
 }

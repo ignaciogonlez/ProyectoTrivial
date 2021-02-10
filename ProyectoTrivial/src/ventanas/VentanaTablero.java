@@ -50,11 +50,6 @@ public class VentanaTablero extends JFrame{
 	     g.dispose();
 	}
 	
-	public static void main(String[] args) {
-		VentanaTablero vent = new VentanaTablero();
-		vent.setVisible(true);
-	}
-	
 	public Jugador getJ1(){
 		return j1;
 	}
@@ -68,7 +63,7 @@ public class VentanaTablero extends JFrame{
 		return j4;
 	}
 	
-	public void jugar() {
+	public void jugar(Thread t)  {
 		
 		String[] rc = {"Andres Iniesta", "Hepatitis", "Isaac Asimov", "Australia", "El día de la reina", 
 				"Mad Men", "Sunismo", "Corinthians", "1935", "1941", "cuatro", "Adrián Escudero", "Ingerida", 
@@ -97,6 +92,12 @@ public class VentanaTablero extends JFrame{
 			if(respuestasCorrectas.contains(vp4.getN())) j4.incrementarPosicion();
 			
 			repaint();
+			
+			try {
+				t.sleep(2500);
+			} catch (InterruptedException e) {
+				System.out.println("no funsionó");				
+			}
 		}
 	}
 	

@@ -96,9 +96,6 @@ public class VentanaRegistrarse extends JFrame{
 				if (registroCorrecto()) {
 					String usuario = tfUsuario.getText();
 					String password = tfPasword.getText();
-					Usuario u = new Usuario(usuario, password, 0, new ArrayList<Usuario>());
-					Main.getSistema().addUsuario(u);
-					Main.getSistema().getbd().insertarUsuarios(usuario, password);
 					dispose();
 					VentanaPrincipal v = new VentanaPrincipal();
 					v.setVisible(true);
