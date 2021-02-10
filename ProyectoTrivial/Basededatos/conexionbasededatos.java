@@ -45,20 +45,26 @@ public class conexionbasededatos {
 		try {
 			String stat = "create table if not exists Usuarios " +
 					"(nombre varchar(40) primary key, " +	//Identificador del usuario						//Nombre del usuario
-					"(password varchar(50), "+
-					" puntuacion integer"+						//Clave del usuario	
+					"password varchar(50), "+
+					"puntuacion integer"+						//Clave del usuario	
 					");";
 				stmt.executeUpdate( stat );
+				
+				
 				stat = "create table if not exists Amigos " +
 						"(nombre varchar(40)," +							//Clave externa del usuario
 						"amigo varchar(40)"+								//Nombre del amigo
 						");";
 				stmt.executeUpdate( stat );
+				
+				
 				stat = "create table if not exists Preguntas " +
 						"(Id integer primary key autoincrement," +	//Identificador de la pregunta
 						"pregunta varchar (100)"+					//Pregunta
 						");";
 				stmt.executeUpdate(stat);
+				
+				
 				stat = "create table if not exists Respuestas " +
 						"(id integer primary key autoincrement," +	//Identificador de la respuesta
 						"IdPregunta integer," +						//Clave externa de pregunta 
@@ -66,13 +72,15 @@ public class conexionbasededatos {
 						"correcta varchar(10)"+						//Si la respuesta es la correcta
 						");";
 				stmt.executeUpdate(stat);
+
 				
-				log( Level.INFO, "BD creación de tabla\t" + stat, null );
+				//log( Level.INFO, "BD creación de tabla\t" + stat, null );
 				
 				System.out.println("Las tablas han sido creadas corretamente");
 				
 		}catch(SQLException e) {
-			log( Level.SEVERE, "Error en creación de base de datos", e );
+			//log( Level.SEVERE, "Error en creación de base de datos", e );
+			System.out.println("no se han podido borrar");
 		}
 	}
 	/**
@@ -85,11 +93,11 @@ public class conexionbasededatos {
 			stmt.executeUpdate("drop table if exists Preguntas");
 			stmt.executeUpdate("drop table if exists Respuestas");
 			
-			log( Level.INFO, "Reiniciada base de datos", null );
+			//log( Level.INFO, "Reiniciada base de datos", null );
 			
 		} catch (SQLException e) {
 			
-			log( Level.SEVERE, "Error en reinicio de base de datos", e );
+			//log( Level.SEVERE, "Error en reinicio de base de datos", e );
 			
 		}
 	}
@@ -104,11 +112,11 @@ public class conexionbasededatos {
 			if (stmt!=null) stmt.close();
 			if (conn!=null) conn.close();
 			
-			log( Level.INFO, "Cierre de base de datos", null );
+			//log( Level.INFO, "Cierre de base de datos", null );
 			
 		} catch (SQLException e) {
 			
-			log( Level.SEVERE, "Error en cierre de base de datos", e );
+			//log( Level.SEVERE, "Error en cierre de base de datos", e );
 		}
 	}
 	
@@ -118,19 +126,19 @@ public class conexionbasededatos {
 	 * @param password clave del usuario
 	 * @return
 	 */
-	public boolean insertarUsuarios(String usuario, String password) {
+	public void insertarUsuarios(String usuario, String password) {
 		String sentSQL = "";
 		try {
 			int iniciarPuntuacion = 0;
-			sentSQL = "insert into Usuarios (nombre, password) values (" +
+			sentSQL = "insert into Usuarios (nombre, password, puntuacion) values (" +
 					"'" + usuario + "', " + 
 					"'" + password + "', " +
 					"'" + iniciarPuntuacion + "'" +
 					")";
 			stmt.executeUpdate( sentSQL );
-			return true;
+			
 		} catch (SQLException e) {
-			return false;
+			e.printStackTrace();
 		}
 	}
 	
@@ -147,6 +155,7 @@ public class conexionbasededatos {
 					"'" + preg.toString() + "'" +   
 					");";
 				stmt.executeUpdate( sentSQL );
+				System.out.println(preg.toString());
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

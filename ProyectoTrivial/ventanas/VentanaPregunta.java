@@ -23,31 +23,14 @@ public class VentanaPregunta {
 		poblarPreguntasJugadores();
 		
 		Random r = new Random();
-		int id = r.nextInt(20);
+		int id = r.nextInt(40);
 		String pregunta = "";
 		try {
 			pregunta = main.Main.getSistema().getbd().preguntaAleatoria(id);
 			String[] listaRespuestas = main.Main.getSistema().getbd().respuestasPregunta(id);
 			n = (String)JOptionPane.showInputDialog(null, pregunta, 
 		              "Trivial", JOptionPane.QUESTION_MESSAGE, null, listaRespuestas,listaRespuestas);
-//			String[] respuestasCorrectas = {"Andres Iniesta", "Hepatitis", "Isaac Asimov", "Australia", "El día de la reina", "Mad Men", "Sunismo", "Corinthians", "1935", "1941", "cuatro", "Adrián Escudero", "Ingerida", "Hígado", "roja", "carbón", "Erótico", "Liechtenstein", "Bebés", "Colombia"};
-//			for(String s : respuestasCorrectas){
-//				if(n.equals(s)){
-//					correcta = "true";
-//					
-//					for(ArrayList<Integer> ar : preguntasJugadores) {
-//						for(Integer i : ar) {
-//							if(c == i) {
-//								
-//							}
-//						}
-//					}
-//					
-//			//	vt.setPlayerPosition(200, 200, 1);
-//				}else{
-//					correcta = "false";
-//				}
-//			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

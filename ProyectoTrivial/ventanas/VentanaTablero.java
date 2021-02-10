@@ -67,7 +67,10 @@ public class VentanaTablero extends JFrame{
 		
 		String[] rc = {"Andres Iniesta", "Hepatitis", "Isaac Asimov", "Australia", "El día de la reina", 
 				"Mad Men", "Sunismo", "Corinthians", "1935", "1941", "cuatro", "Adrián Escudero", "Ingerida", 
-				"Hígado", "roja", "carbón", "Erótico", "Liechtenstein", "Bebés", "Colombia"};
+				"Hígado", "roja", "carbón", "Erótico", "Liechtenstein", "Bebés", "Colombia","Cero","Páncreas",
+				"Lagomorfo","Una bacteria","Rodillas","Cuatro","Rugby","Argentina","Estados Unidos","15",
+				"El conquistador","Isabel I y Fernando II","Romano","Alemania","1812","Impuesto","Sacramento",
+				"Argel","Ghana","Chile"};
 		
 		ArrayList<String> respuestasCorrectas = new ArrayList<String>();
 		
