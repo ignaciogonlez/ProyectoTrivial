@@ -12,6 +12,7 @@ public class GestorVentanas {
 	VentanaRegistrarse ventanaRegistro;
 	VentanaMenu ventanaMenu;
 	VentanaAmigos ventanaAmigos;
+	VentanaAgregarAmigos ventanaAgregarAmigos;
 	VentanaClasificacion ventanaClasificacion;
 	VentanaCarga ventanaCarga1;
 	VentanaCarga ventanaCarga2;
@@ -20,12 +21,14 @@ public class GestorVentanas {
 	VentanaCargaServidor ventanaCargaServidor;
 	VentanaTablero ventanaTablero;
 	
+	
 	public GestorVentanas() {
 		ventanaPrincipal = new VentanaPrincipal();
 		ventanaInicio = new VentanaInicioSesion();
 		ventanaRegistro = new VentanaRegistrarse();
 		ventanaMenu = new VentanaMenu();
-		ventanaAmigos = new VentanaAmigos();
+		//ventanaAmigos = new VentanaAmigos();
+		//ventanaAgregarAmigos = new VentanaAgregarAmigos();
 		ventanaClasificacion = new VentanaClasificacion();
 		ventanaCarga1 = new VentanaCarga();
 		ventanaCarga2 = new VentanaCarga();
@@ -48,6 +51,9 @@ public class GestorVentanas {
 	}
 	public VentanaAmigos getVentanaAmigos(){
 		return ventanaAmigos;
+	}
+	public VentanaAgregarAmigos getVentanaAgregarAmigos(){
+		return ventanaAgregarAmigos;
 	}
 	public VentanaClasificacion getVentanaClasificacion(){
 		return ventanaClasificacion;

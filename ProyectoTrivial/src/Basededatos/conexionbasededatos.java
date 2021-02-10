@@ -8,9 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import datos.Pregunta;
 import datos.Respuesta;
+import datos.Usuario;
 import main.Main;
 import main.Sistema;
 
@@ -43,12 +45,13 @@ public class conexionbasededatos {
 		try {
 			String stat = "create table if not exists Usuarios " +
 					"(nombre varchar(40) primary key, " +	//Identificador del usuario						//Nombre del usuario
-					"password varchar(50)"+						//Clave del usuario	
+					"(password varchar(50), "+
+					" puntuacion integer"+						//Clave del usuario	
 					");";
 				stmt.executeUpdate( stat );
-				stat = "create table if not exists Sesiones " +
+				stat = "create table if not exists Amigos " +
 						"(nombre varchar(40)," +							//Clave externa del usuario
-						"fecha varchar(10) primary key"+							//Fecha de la sesion (cambiar a string con format)					//Numero de sesiones del usuario
+						"amigo varchar(40)"+								//Nombre del amigo
 						");";
 				stmt.executeUpdate( stat );
 				stat = "create table if not exists Preguntas " +
@@ -64,9 +67,12 @@ public class conexionbasededatos {
 						");";
 				stmt.executeUpdate(stat);
 				
-			System.out.println("Las tablas han sido creadas corretamente");
+				log( Level.INFO, "BD creación de tabla\t" + stat, null );
+				
+				System.out.println("Las tablas han sido creadas corretamente");
+				
 		}catch(SQLException e) {
-			e.printStackTrace();
+			log( Level.SEVERE, "Error en creación de base de datos", e );
 		}
 	}
 	/**
@@ -77,7 +83,14 @@ public class conexionbasededatos {
 		try {
 			stmt.executeUpdate("drop table if exists Usuarios");
 			stmt.executeUpdate("drop table if exists Preguntas");
+			stmt.executeUpdate("drop table if exists Respuestas");
+			
+			log( Level.INFO, "Reiniciada base de datos", null );
+			
 		} catch (SQLException e) {
+			
+			log( Level.SEVERE, "Error en reinicio de base de datos", e );
+			
 		}
 	}
 	
@@ -90,7 +103,12 @@ public class conexionbasededatos {
 		try {
 			if (stmt!=null) stmt.close();
 			if (conn!=null) conn.close();
+			
+			log( Level.INFO, "Cierre de base de datos", null );
+			
 		} catch (SQLException e) {
+			
+			log( Level.SEVERE, "Error en cierre de base de datos", e );
 		}
 	}
 	
@@ -103,9 +121,11 @@ public class conexionbasededatos {
 	public boolean insertarUsuarios(String usuario, String password) {
 		String sentSQL = "";
 		try {
+			int iniciarPuntuacion = 0;
 			sentSQL = "insert into Usuarios (nombre, password) values (" +
-					"'" + usuario + "', " +   
-					"'" + password + "'" +
+					"'" + usuario + "', " + 
+					"'" + password + "', " +
+					"'" + iniciarPuntuacion + "'" +
 					")";
 			stmt.executeUpdate( sentSQL );
 			return true;
@@ -266,9 +286,146 @@ public class conexionbasededatos {
 		return correcto;
 	}
 	
-
-
-
-
+	/**
+	 * método para comprobar si existe el usuario que se loggea en la bd
+	 * @param nombre textField del nombre
+	 * @param lista lista de amigos del usuario actual para anyadirle el nuevo amigo
+	 * @return true si se ha agregado correctamente
+	 * @throws SQLException
+	 */
+	
+	/***
+	public boolean verificarYAgregarUsuario(String nombre, ArrayList<Usuario> lista) throws SQLException {
+		boolean correcto= false;
+		String sentSQL = "select * from Usuarios";
+		ResultSet rs = stmt.executeQuery(sentSQL);
+		while (rs.next()) {
+			String nombre_bd = rs.getString("nombre");
+			if(nombre_bd.equals(nombre)) {
+				correcto = true;
+				break;
+			}
+		}
+		if(correcto){
+			String sql = "select * from Usuarios where nombre='" + nombre + "';";
+			ResultSet res = stmt.executeQuery(sql);
+			while (res.next()) {
+				Usuario us = new Usuario(nombre, res.getString("password"), res.getInt("puntuacion"), (ArrayList<Usuario>) res.getArray("listaAmigos"));
+				lista.add(us);
+			}
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public ArrayList<Usuario> sacarAmigos(String nombre) throws SQLException{
+		String sentSQL = "select * from Usuarios where nombre='" + nombre + "';";
+		ResultSet rs = stmt.executeQuery(sentSQL);
+		while (rs.next()) {
+			ArrayList<Usuario> lista = (ArrayList<Usuario>) rs.getArray("listaAmigos");
+			return lista;
+		}
+		return null;
+	}
+	
+	public Usuario sacarUsuarioActual(String nombre) throws SQLException{
+			String sql = "select * from Usuarios where nombre='" + nombre + "';";
+			ResultSet res = stmt.executeQuery(sql);
+			while (res.next()) {
+				Usuario us = new Usuario(nombre, res.getString("password"), res.getInt("puntuacion"), (ArrayList<Usuario>) res.getArray("listaAmigos"));
+				return us;
+			}
+			return null;
+	}
+	***/
+	public void updatePuntuacion(String nombreUsuario) throws SQLException {
+		String sentSQL = "select puntuacion from Usuarios where nombre='" + nombreUsuario + "';";
+		ResultSet res = stmt.executeQuery(sentSQL);
+		int puntuacion=-1;
+		while (res.next()) {
+			puntuacion = res.getInt(puntuacion);
+		}
+		puntuacion++;
+		sentSQL = "update Usuarios set"+
+						"puntuacion=" + puntuacion + "where nombre='" + nombreUsuario + "';";
+		stmt.executeUpdate( sentSQL );
+	}
+	
+	public void volcarUsuarios(ArrayList<Usuario> lista) throws SQLException {
+		String sentSQL = "select * from Usuarios;";
+		ResultSet res = stmt.executeQuery(sentSQL);
+		String nombre = "";
+		String password = "";
+		int puntuacion = -1;
+		while (res.next()) {
+			nombre = res.getString(nombre);
+			password = res.getString(password);
+			puntuacion = res.getInt(puntuacion);
+			Usuario u = new Usuario(nombre, password, puntuacion);
+			lista.add(u);
+		}
+	}
+	
+	public void insertarAmigo(String usuario, String amigo) throws SQLException {
+		String sentSQL = "insert into Amigos(nombre,amigo) values (" +
+				"'" + usuario + "'," +
+				"'" + amigo + "'" + 
+				");";
+		stmt.executeUpdate( sentSQL );
+	}
+	public ArrayList<String> listaNombreAmigos(String nombreUsuario) throws SQLException {
+		ArrayList<String> listaAmigos = new ArrayList<String>();
+		String sentSQL = "select amigo from Usuarios where nombre='" + nombreUsuario + "';";
+		ResultSet res = stmt.executeQuery(sentSQL);
+		String amigo = "";
+		while (res.next()) {
+			amigo = res.getString(amigo);
+			listaAmigos.add(amigo);
+		}
+		return listaAmigos;
+	}
+	
+	public ArrayList<Usuario> listaUsuariosAmigos(String nombreUsuario) throws SQLException {
+		ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		ArrayList<String> listaAmigos = new ArrayList<String>();
+		String sentSQL = "select amigo from Usuarios where nombre='" + nombreUsuario + "';";
+		ResultSet res = stmt.executeQuery(sentSQL);
+		String amigo = "";
+		while (res.next()) {
+			amigo = res.getString(amigo);
+			listaAmigos.add(amigo);
+		}
+		for(String a:listaAmigos) {
+			sentSQL = "select * from Usuarios where nombre='" + amigo + "';";
+			int puntuacion=-1;
+			String password = "";
+			while (res.next()) {
+				puntuacion = res.getInt(puntuacion);
+				password = res.getString(password);
+				Usuario u = new Usuario(a,password,puntuacion);
+				listaUsuarios.add(u);
+			}
+		}
+		
+		return listaUsuarios;
+	}
+	
+	
+	//logging
+	
+	private static Logger logger = null;
+	
+	private static void log(Level level, String msg, Throwable excepcion) {
+		if (logger==null) {  
+			logger = Logger.getLogger( conexionbasededatos.class.getName() );  
+			logger.setLevel( Level.ALL ); 
+		}
+		if (excepcion==null) {
+			logger.log( level, msg );
+		}else {
+			logger.log( level, msg, excepcion );
+		}
+	}
 }
 

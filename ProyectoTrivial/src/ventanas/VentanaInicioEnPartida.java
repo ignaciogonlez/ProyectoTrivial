@@ -1,48 +1,31 @@
-
 package ventanas;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.*;
+import javax.swing.*;
 import java.sql.SQLException;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import main.Main;
 
 /** 
- * Ventana para realizar el login
+ * Ventana para realizar el login en partida
  */
-public class VentanaInicioSesion extends JFrame{
+public class VentanaInicioEnPartida extends JFrame{
 	
-	JButton bAtras;
 	JButton bEntrar;
 	JLabel lUsuario;
 	JTextField TfUsuario;
 	JLabel lPasword;
 	JTextField TfPasword;
 	
-	public VentanaInicioSesion() {
-		
-		//FondoPanel fondo = new FondoPanel();
-		//fondo.setImagen("/fotos/trivial2.jpg");
-		//this.setContentPane(fondo);
-		
-		
-		
-		
-		
-		setTitle( "Inicio sesion" );
-		setSize( 800, 600 );
+	public VentanaInicioEnPartida() {
+
+		setTitle( "" );
+		setSize( 400, 300 );
 		setLocationRelativeTo( null );
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.yellow);
@@ -51,8 +34,6 @@ public class VentanaInicioSesion extends JFrame{
 		
 		bEntrar = new JButton("Entrar");
 		panelInferior.add(bEntrar);
-		bAtras = new JButton("Atras");
-		panelInferior.add(bAtras);
 		getContentPane().add(panelInferior,"South");
 		
 		lUsuario = new JLabel("Usuario");
@@ -73,29 +54,35 @@ public class VentanaInicioSesion extends JFrame{
 		
 		getContentPane().add(panel);
 		
-		bAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Main.getGestorVentanas().getVentanaPrincipal().setVisible(true);
-				dispose();
-			}
-		});
 		//Reviso si esta en la bd
 		bEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre = TfUsuario.getText();
+
 				String password = TfPasword.getText();
+
 				try {
+
 					if(main.Main.getSistema().getbd().inicioCorrecto(nombre, password)) {
+
 						Main.getGestorVentanas().getVentanaMenu().setVisible(true);
-						//Main.setUsuarioActual(Main.getSistema().getbd().sacarUsuarioActual(nombre));
+
 						dispose();
+
 					}
+
 				} catch (SQLException e1) {
+
 					e1.printStackTrace();
+
 				}
 			}
 		});
+
 	}
+
+	public void setTitulo(int jugador){
+		setTitle("Inicio Sesion de Jugador " + jugador);	
 	
-	
+}
 }

@@ -22,6 +22,8 @@ public class VentanaMenu extends JFrame{
 	JButton bJugar;  //boton para unirse a una partida
 	JButton bcrearPartida;   //boton para crear partida
 	
+	private Thread t;
+	
 	public VentanaMenu() {
 	
 	setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -62,7 +64,9 @@ public class VentanaMenu extends JFrame{
 	});
 	bAmigos.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Main.getGestorVentanas().getVentanaAmigos().setVisible(true);
+			//Main.getGestorVentanas().getVentanaAmigos().setVisible(true);
+			VentanaAmigos v = new VentanaAmigos();
+			v.setVisible(true);
 			dispose();
 		}
 	});
@@ -111,10 +115,10 @@ public class VentanaMenu extends JFrame{
 //				}
 //			}).start();	
 			Main.getGestorVentanas().getVentanaTablero().setVisible(true);
-			(new Thread() {
+			(t = new Thread() {
 				@Override
 				public void run() {
-					Main.getGestorVentanas().getVentanaTablero().jugar();;
+					Main.getGestorVentanas().getVentanaTablero().jugar(t);
 				}
 			}).start();
 		}

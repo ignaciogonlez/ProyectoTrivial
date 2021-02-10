@@ -3,11 +3,15 @@ package ventanas;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
+import datos.Usuario;
 import main.Main;
 
 /** 
@@ -16,6 +20,7 @@ import main.Main;
 public class VentanaClasificacion extends JFrame{
 	
 	JButton bAtras;
+	JTable tClasificacion;
 	
 	public VentanaClasificacion() {
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -35,4 +40,20 @@ public class VentanaClasificacion extends JFrame{
 			}
 		});
 	}
+	/**
+	private void crearTabla(){
+		tClasificacion = new JTable();
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.setColumnIdentifiers(new Object[]{"Usuario", "Puntuación"});
+		try{
+			ArrayList<Usuario> listaAmigos = Main.getSistema().getbd().sacarAmigos(Main.getUsuarioActual().getNombre());
+			for(Usuario u : listaAmigos){
+				modelo.addRow(new Object[]{u.getNombre(), u.getPuntuacion()});
+			}
+			tClasificacion.setModel(modelo);
+		}catch (Exception e){
+			System.out.println(e);
+		}
+	}
+	**/
 }
