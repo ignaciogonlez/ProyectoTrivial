@@ -11,6 +11,10 @@ import javax.swing.SwingUtilities;
 
 import main.Main;
 
+/**Clase jugador donde se construyen los jugadores y se les asigna una serie de posiciones 
+ * que deben ir tomando según el fichero properties
+ * @author luissuarezcuartas
+ */
 
 public class Jugador{
 	
@@ -19,8 +23,8 @@ public class Jugador{
 	private Rectangle rect;
 	private Color c;
 	private String[] posiciones;
-	private int codigo, n = 0;
-	private Properties properties1, properties2, properties3, properties4;
+	private int codigo, n = 0;	//codigo de jugador (1 2 3 o 4)
+	private Properties properties1, properties2, properties3, properties4;   //ficheros donde se guardan las posiciones de cada jugador a lo largo del mapa
 	private StringTokenizer stk;
 	
 	public Jugador(int x, int y, Color c, int codigo) {
@@ -56,12 +60,20 @@ public class Jugador{
     public void sety(float y) {
     	this.y = y;
     }
-     
+     /**
+      * Metodo para pintar los jugadores sobre el mapa
+      * @param g (Clase Graphics)
+      */
 	public void paint(Graphics g) {
 	     g.setColor(c);
 	     g.fillRect(rect.x, rect.y, rect.width, rect.height);
 	}
 	
+	
+	/**Metodo recursivo para ir rellenando las posiciones pasándolas del fichero properties
+	 * @param codigo
+	 * @param index
+	 */
 	public void rellenarPosiciones(int codigo, int index) {
 		
 		if(index < 11) {
@@ -90,6 +102,9 @@ public class Jugador{
 		return posiciones[n];
 	}
 	
+	/**
+	 * Metodo para ir incrementando la posición del jugador cada vez que avanza
+	 */
 	public void incrementarPosicion() {
 		n++;
 
@@ -97,13 +112,15 @@ public class Jugador{
 		
 	}
 	
+	/**
+	 * Actualiza la posición del jugador
+	 */
 	public void actualizarPosiciones() {
 		
 		int c = 0;
 		
 		stk = new StringTokenizer(getPosicion(),";");
 		
-		System.out.println(getPosicion());
 		
 		while(stk.hasMoreTokens()) {
 		

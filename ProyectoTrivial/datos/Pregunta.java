@@ -5,8 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /** 
- * Objeto "pregunta" que se iran realizando durante el juego
+ * Objeto "pregunta" que se iran realizando durante el juego para facilitar la gestión de datos con la bd
  */
+
 public class Pregunta implements Serializable {
 	
 	private String pregunta;

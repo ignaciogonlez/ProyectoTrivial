@@ -57,6 +57,25 @@ public class Sistema implements Serializable{
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 
+	
 	Respuesta respuesta1a;
 	Respuesta respuesta1b;
 	Respuesta respuesta1c;
@@ -338,8 +357,7 @@ public class Sistema implements Serializable{
 	Pregunta pregunta40;
 	
 	
-	
-	
+
 	public void insertarPreguntas() {
 		respuesta1a = new Respuesta("Sergio Ramos",false);
 		respuesta1b = new Respuesta("Sergio Busquets",false);
@@ -825,5 +843,7 @@ public class Sistema implements Serializable{
 		listaPreguntas.add(pregunta40);
 		
 	}
+	* 	
+ */
 	
 }

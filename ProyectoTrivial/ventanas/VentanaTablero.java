@@ -99,7 +99,7 @@ public class VentanaTablero extends JFrame{
 			try {
 				t.sleep(2500);
 			} catch (InterruptedException e) {
-				System.out.println("no funsionó");				
+				e.printStackTrace();
 			}
 		}
 	}

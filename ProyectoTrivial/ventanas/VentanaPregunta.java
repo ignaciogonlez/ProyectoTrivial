@@ -24,6 +24,7 @@ public class VentanaPregunta {
 		
 		Random r = new Random();
 		int id = r.nextInt(40);
+		System.out.println(id);
 		String pregunta = "";
 		try {
 			pregunta = main.Main.getSistema().getbd().preguntaAleatoria(id);

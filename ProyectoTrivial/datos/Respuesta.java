@@ -1,5 +1,9 @@
 package datos;
-
+/**
+ * Objeto "respuesta" que se iran realizando durante el juego para facilitar la gestión de datos con la bd
+ * @author luissuarezcuartas
+ *
+ */
 public class Respuesta {
 		
 		String respuesta;
