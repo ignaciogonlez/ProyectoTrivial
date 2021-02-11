@@ -14,11 +14,9 @@ public class GestorVentanas {
 	VentanaAmigos ventanaAmigos;
 	VentanaAgregarAmigos ventanaAgregarAmigos;
 	VentanaClasificacion ventanaClasificacion;
-	VentanaCarga ventanaCarga1;
-	VentanaCarga ventanaCarga2;
-	VentanaCarga ventanaCarga3;
-	VentanaCarga ventanaCarga4;
-	VentanaCargaServidor ventanaCargaServidor;
+	VentanaInicioEnPartida ventanaInicioEnPartida2;
+	VentanaInicioEnPartida ventanaInicioEnPartida3;
+	VentanaInicioEnPartida ventanaInicioEnPartida4;
 	VentanaTablero ventanaTablero;
 	
 	
@@ -27,14 +25,10 @@ public class GestorVentanas {
 		ventanaInicio = new VentanaInicioSesion();
 		ventanaRegistro = new VentanaRegistrarse();
 		ventanaMenu = new VentanaMenu();
-		//ventanaAmigos = new VentanaAmigos();
-		//ventanaAgregarAmigos = new VentanaAgregarAmigos();
 		ventanaClasificacion = new VentanaClasificacion();
-		ventanaCarga1 = new VentanaCarga();
-		ventanaCarga2 = new VentanaCarga();
-		ventanaCarga3 = new VentanaCarga();
-		ventanaCarga4 = new VentanaCarga();
-		ventanaCargaServidor = new VentanaCargaServidor();
+		ventanaInicioEnPartida2 = new VentanaInicioEnPartida(2);
+		ventanaInicioEnPartida3 = new VentanaInicioEnPartida(3);
+		ventanaInicioEnPartida4 = new VentanaInicioEnPartida(4);
 		ventanaTablero = new VentanaTablero();
 	}
 	public VentanaPrincipal getVentanaPrincipal() {
@@ -58,20 +52,14 @@ public class GestorVentanas {
 	public VentanaClasificacion getVentanaClasificacion(){
 		return ventanaClasificacion;
 	}
-	public VentanaCarga getVentanaCarga1() {
-		return ventanaCarga1;
+	public VentanaInicioEnPartida getVentanaInicioEnPartida2(){
+		return ventanaInicioEnPartida2;
 	}
-	public VentanaCarga getVentanaCarga2() {
-		return ventanaCarga2;
+	public VentanaInicioEnPartida getVentanaInicioEnPartida3(){
+		return ventanaInicioEnPartida3;
 	}
-	public VentanaCarga getVentanaCarga3() {
-		return ventanaCarga3;
-	}
-	public VentanaCarga getVentanaCarga4() {
-		return ventanaCarga4;
-	}
-	public VentanaCargaServidor getVentanaCargaServidor() {
-		return ventanaCargaServidor;
+	public VentanaInicioEnPartida getVentanaInicioEnPartida4(){
+		return ventanaInicioEnPartida4;
 	}
 	public VentanaTablero getVentanaTablero(){
 		return ventanaTablero;

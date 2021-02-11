@@ -18,13 +18,15 @@ public class VentanaInicioEnPartida extends JFrame{
 	JTextField TfUsuario;
 	JLabel lPasword;
 	JTextField TfPasword;
+	boolean cerrada;
 	
-	public VentanaInicioEnPartida() {
+	public VentanaInicioEnPartida(int jugador) {
 
-		setTitle( "" );
+		setTitle( "Inicio de sesión del Jugador " + jugador );
 		setSize( 400, 300 );
 		setLocationRelativeTo( null );
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+		cerrada = false;
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -37,19 +39,19 @@ public class VentanaInicioEnPartida extends JFrame{
 		getContentPane().add(panelInferior,"South");
 		
 		lUsuario = new JLabel("Usuario");
-		lUsuario.setBounds(270, 200, 80, 25);
+		lUsuario.setBounds(80, 60, 80, 25);
 		panel.add(lUsuario);
 		
 		TfUsuario = new JTextField();
-		TfUsuario.setBounds(330, 200, 160, 25);
+		TfUsuario.setBounds(140, 60, 160, 25);
 		panel.add(TfUsuario);
 		
 		lPasword = new JLabel("Password");
-		lPasword.setBounds(270, 250, 80, 25);
+		lPasword.setBounds(80, 110, 80, 25);
 		panel.add(lPasword);
 		
 		TfPasword = new JTextField();
-		TfPasword.setBounds(330, 250, 190, 25);
+		TfPasword.setBounds(140, 110, 190, 25);
 		panel.add(TfPasword);
 		
 		getContentPane().add(panel);
@@ -64,10 +66,18 @@ public class VentanaInicioEnPartida extends JFrame{
 				try {
 
 					if(main.Main.getSistema().getbd().inicioCorrecto(nombre, password)) {
-
-						Main.getGestorVentanas().getVentanaMenu().setVisible(true);
-
+						cerrada = true;
 						dispose();
+						if(jugador==2){
+							Main.getGestorVentanas().getVentanaTablero().setU2(nombre);
+						}
+						if(jugador==3){
+							Main.getGestorVentanas().getVentanaTablero().setU3(nombre);
+						}
+						if(jugador==4){
+							Main.getGestorVentanas().getVentanaTablero().setU4(nombre);
+						}
+
 
 					}
 

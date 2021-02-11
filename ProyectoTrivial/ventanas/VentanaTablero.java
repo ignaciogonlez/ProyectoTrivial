@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,6 +19,10 @@ public class VentanaTablero extends JFrame{
 	Jugador j2;
 	Jugador j3;
 	Jugador j4;
+	String u1;
+	String u2;
+	String u3;
+	String u4;
 	FondoPanel fondo = new FondoPanel();
 	
 	public VentanaTablero() {
@@ -25,6 +30,7 @@ public class VentanaTablero extends JFrame{
 		setTitle( "Tablero" );
 		setSize( 800, 600 );
 		setLocationRelativeTo( null );
+		u4="";
 		
 		//Mapa
 		fondo.setImagen("/foto_fondo.jpg");
@@ -61,6 +67,21 @@ public class VentanaTablero extends JFrame{
 	}
 	public Jugador getJ4(){
 		return j4;
+	}
+	public void setU1(String usuario){
+		u1 = usuario;
+	}
+	public void setU2(String usuario){
+		u2 = usuario;
+	}
+	public void setU3(String usuario){
+		u3 = usuario;
+	}
+	public void setU4(String usuario){
+		u4 = usuario;
+	}
+	public String getU4(){
+		return u4;
 	}
 	
 	public void jugar(Thread t)  {
@@ -101,6 +122,43 @@ public class VentanaTablero extends JFrame{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		if(j1.getN() > 9){
+			VentanaGanador vg = new VentanaGanador(this, u1);
+			try {
+				Main.getSistema().getbd().updatePuntuacion(u1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			vg.setVisible(true);
+		}
+		if(j2.getN() > 9){
+			VentanaGanador vg = new VentanaGanador(this, u2);
+			try {
+				Main.getSistema().getbd().updatePuntuacion(u2);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			vg.setVisible(true);
+		}
+		if(j3.getN() > 9){
+			VentanaGanador vg = new VentanaGanador(this, u3);
+			try {
+				Main.getSistema().getbd().updatePuntuacion(u3);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			vg.setVisible(true);
+		}
+		if(j4.getN() > 9){
+			VentanaGanador vg = new VentanaGanador(this, u4);
+			try {
+				Main.getSistema().getbd().updatePuntuacion(u4);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			vg.setVisible(true);
 		}
 	}
 	

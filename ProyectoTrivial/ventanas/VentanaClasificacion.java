@@ -33,6 +33,11 @@ public class VentanaClasificacion extends JFrame{
 		panelInferior.add(bAtras);
 		getContentPane().add(panelInferior,"South");
 		
+		JPanel panelCentral = new JPanel(new FlowLayout());
+		crearTabla();
+		panelCentral.add(tClasificacion);
+		getContentPane().add(panelCentral,"Center");
+		
 		bAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Main.getGestorVentanas().getVentanaMenu().setVisible(true);
@@ -40,13 +45,13 @@ public class VentanaClasificacion extends JFrame{
 			}
 		});
 	}
-	/**
+
 	private void crearTabla(){
 		tClasificacion = new JTable();
 		DefaultTableModel modelo = new DefaultTableModel();
 		modelo.setColumnIdentifiers(new Object[]{"Usuario", "Puntuación"});
 		try{
-			ArrayList<Usuario> listaAmigos = Main.getSistema().getbd().sacarAmigos(Main.getUsuarioActual().getNombre());
+			ArrayList<Usuario> listaAmigos = Main.getSistema().getbd().listaUsuariosAmigos(Main.getUsuarioActual());
 			for(Usuario u : listaAmigos){
 				modelo.addRow(new Object[]{u.getNombre(), u.getPuntuacion()});
 			}
@@ -55,5 +60,4 @@ public class VentanaClasificacion extends JFrame{
 			System.out.println(e);
 		}
 	}
-	**/
 }

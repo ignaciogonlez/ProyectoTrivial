@@ -148,5 +148,9 @@ public class Jugador{
 	public int getN() {
 		return n;
 	}
+	
+	public void setN(int newN){
+		n = newN;
+	}
 	       
 }

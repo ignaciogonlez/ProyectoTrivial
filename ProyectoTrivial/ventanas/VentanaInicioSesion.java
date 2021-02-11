@@ -87,7 +87,7 @@ public class VentanaInicioSesion extends JFrame{
 				try {
 					if(main.Main.getSistema().getbd().inicioCorrecto(nombre, password)) {
 						Main.getGestorVentanas().getVentanaMenu().setVisible(true);
-						//Main.setUsuarioActual(Main.getSistema().getbd().sacarUsuarioActual(nombre));
+						Main.setUsuarioActual(nombre);
 						dispose();
 					}
 				} catch (SQLException e1) {

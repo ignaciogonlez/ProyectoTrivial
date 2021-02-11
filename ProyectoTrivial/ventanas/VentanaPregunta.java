@@ -75,4 +75,8 @@ public class VentanaPregunta {
 	public String getN(){
 		return n;
 	}
+	
+	public void setN(String newN){
+		n = newN;
+	}
 }

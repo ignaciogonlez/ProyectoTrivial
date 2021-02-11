@@ -19,8 +19,7 @@ public class VentanaMenu extends JFrame{
 	JButton bAmigos;
 	JButton bSalir;
 	
-	JButton bJugar;  //boton para unirse a una partida
-	JButton bcrearPartida;   //boton para crear partida
+	JButton bJugar;  //boton para empezar la partida
 	
 	private Thread t;
 	
@@ -45,10 +44,6 @@ public class VentanaMenu extends JFrame{
 	JPanel panelCentral = new JPanel(new FlowLayout());
 	fondo.setImagen("/trivial2.jpg");
 	getContentPane().add(fondo, "Center");
-	
-	bcrearPartida = new JButton("Crear Partida");
-	panelCentral.add(bcrearPartida);
-	bcrearPartida.setBackground(Color.orange);
 	
 	bJugar = new JButton("Jugar");
 	panelCentral.add(bJugar);
@@ -79,59 +74,25 @@ public class VentanaMenu extends JFrame{
 	bJugar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-//			//Servidor
-//			(new Thread() {
-//				@Override
-//				public void run() {
-//					Main.getGestorVentanas().getVentanaCargaServidor().lanzaServidor();
-//				}
-//			}).start();
-//			//Cliente 1
-//			(new Thread() {
-//				@Override
-//				public void run() {
-//					Main.getGestorVentanas().getVentanaCarga1().lanzaCliente();
-//				}
-//			}).start();
-//			//Cliente 2
-//			(new Thread() {
-//				@Override
-//				public void run() {
-//					Main.getGestorVentanas().getVentanaCarga2().lanzaCliente();
-//				}
-//			}).start();
-//			//Cliente 3
-//			(new Thread() {
-//				@Override
-//				public void run() {
-//					Main.getGestorVentanas().getVentanaCarga3().lanzaCliente();
-//				}
-//			}).start();
-//			//Cliente 4
-//			(new Thread() {
-//				@Override
-//				public void run() {
-//					Main.getGestorVentanas().getVentanaCarga4().lanzaCliente();
-//				}
-//			}).start();	
-			Main.getGestorVentanas().getVentanaTablero().setVisible(true);
+			Main.getGestorVentanas().getVentanaInicioEnPartida4().setVisible(true);
+			Main.getGestorVentanas().getVentanaInicioEnPartida3().setVisible(true);
+			Main.getGestorVentanas().getVentanaInicioEnPartida2().setVisible(true);
 			(t = new Thread() {
 				@Override
 				public void run() {
-					Main.getGestorVentanas().getVentanaTablero().jugar(t);
+					boolean terminado = false;
+					while(!terminado){
+						System.out.println("Está en el bucle");
+						if(!(Main.getGestorVentanas().getVentanaTablero().getU4().equals(""))){
+							System.out.println("Ultima ventana cerrada");
+							terminado = true;
+							Main.getGestorVentanas().getVentanaTablero().setVisible(true);
+							Main.getGestorVentanas().getVentanaTablero().setU1(Main.getUsuarioActual());
+							Main.getGestorVentanas().getVentanaTablero().jugar(t);;
+						}
+					}
 				}
 			}).start();
-		}
-	});
-	bcrearPartida.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			(new Thread() {
-				@Override
-				public void run() {
-					Main.getGestorVentanas().getVentanaCargaServidor().lanzaServidor();
-				}
-			}).start();
-			Main.getGestorVentanas().getVentanaCargaServidor().setVisible(true);
 		}
 	});
 	}

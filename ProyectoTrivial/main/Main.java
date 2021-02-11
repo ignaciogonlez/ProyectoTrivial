@@ -18,16 +18,16 @@ public class Main {
 	private static GestorVentanas gestorVentanas;
 	private static Sistema sistema;
 	private static Properties properties1, properties2, properties3, properties4;
-	static Usuario usuarioActual;
+	static String usuarioActual;
 	
 	public static void main(String[] args) throws SQLException, IOException {
 		
 		sistema = new Sistema();
 		gestorVentanas = new GestorVentanas();
+		usuarioActual = "";
 		gestorVentanas.getVentanaPrincipal().setVisible(true);
 		sistema.bd.inicioBD("TrivialBD");
 		sistema.bd.verPreguntas();
-		//sistema.bd.crearTablasBD();
 		inicializarProperties();
 	} 
 	
@@ -37,6 +37,10 @@ public class Main {
 	
 	public static Sistema getSistema(){
 		return sistema;
+	}
+	
+	public static void setSistema(Sistema sist){
+		sistema = sist;
 	}
 	
 	public static void inicializarProperties() throws IOException {
@@ -79,11 +83,11 @@ public class Main {
 		return properties4;
 	}
 	
-	public static Usuario getUsuarioActual(){
+	public static String getUsuarioActual(){
 		return usuarioActual;
 	}
 	
-	public static void setUsuarioActual(Usuario usuario){
+	public static void setUsuarioActual(String usuario){
 		usuarioActual = usuario;
 	}
 	

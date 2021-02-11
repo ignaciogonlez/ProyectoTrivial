@@ -13,7 +13,7 @@ public class VentanaGanador extends JFrame{
 	FondoPanel fondo;
 	JLabel lMensaje;
 	
-	public VentanaGanador(VentanaTablero vt, int jugador){
+	public VentanaGanador(VentanaTablero vt, String jugador){
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		setTitle( "GANADOR" );
 		setSize( 200, 200 );
@@ -29,18 +29,7 @@ public class VentanaGanador extends JFrame{
 		getContentPane().add(fondo, "Center");
 		
 		JPanel panelSuperior = new JPanel(new FlowLayout());
-		if(jugador == 1){
-			lMensaje = new JLabel("Ganador el Jugador 1");
-		}
-		if(jugador == 2){
-			lMensaje = new JLabel("Ganador el Jugador 2");
-		}
-		if(jugador == 3){
-			lMensaje = new JLabel("Ganador el Jugador 3");
-		}
-		if(jugador == 4){
-			lMensaje = new JLabel("Ganador el Jugador 4");
-		}
+		lMensaje = new JLabel(jugador + " es el ganador");
 		lMensaje.setFont(new Font("Serif", Font.PLAIN, 14));
 		panelSuperior.add(lMensaje);
 		getContentPane().add(panelSuperior,"North");

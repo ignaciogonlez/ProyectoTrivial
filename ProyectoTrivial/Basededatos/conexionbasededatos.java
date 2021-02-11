@@ -302,9 +302,7 @@ public class conexionbasededatos {
 	 * @return true si se ha agregado correctamente
 	 * @throws SQLException
 	 */
-	
-	/***
-	public boolean verificarYAgregarUsuario(String nombre, ArrayList<Usuario> lista) throws SQLException {
+	public boolean verificarUsuario(String nombre) throws SQLException {
 		boolean correcto= false;
 		String sentSQL = "select * from Usuarios";
 		ResultSet rs = stmt.executeQuery(sentSQL);
@@ -315,39 +313,9 @@ public class conexionbasededatos {
 				break;
 			}
 		}
-		if(correcto){
-			String sql = "select * from Usuarios where nombre='" + nombre + "';";
-			ResultSet res = stmt.executeQuery(sql);
-			while (res.next()) {
-				Usuario us = new Usuario(nombre, res.getString("password"), res.getInt("puntuacion"), (ArrayList<Usuario>) res.getArray("listaAmigos"));
-				lista.add(us);
-			}
-			return true;
-		}else{
-			return false;
-		}
+		return correcto;
 	}
 	
-	public ArrayList<Usuario> sacarAmigos(String nombre) throws SQLException{
-		String sentSQL = "select * from Usuarios where nombre='" + nombre + "';";
-		ResultSet rs = stmt.executeQuery(sentSQL);
-		while (rs.next()) {
-			ArrayList<Usuario> lista = (ArrayList<Usuario>) rs.getArray("listaAmigos");
-			return lista;
-		}
-		return null;
-	}
-	
-	public Usuario sacarUsuarioActual(String nombre) throws SQLException{
-			String sql = "select * from Usuarios where nombre='" + nombre + "';";
-			ResultSet res = stmt.executeQuery(sql);
-			while (res.next()) {
-				Usuario us = new Usuario(nombre, res.getString("password"), res.getInt("puntuacion"), (ArrayList<Usuario>) res.getArray("listaAmigos"));
-				return us;
-			}
-			return null;
-	}
-	***/
 	public void updatePuntuacion(String nombreUsuario) throws SQLException {
 		String sentSQL = "select puntuacion from Usuarios where nombre='" + nombreUsuario + "';";
 		ResultSet res = stmt.executeQuery(sentSQL);
@@ -377,19 +345,37 @@ public class conexionbasededatos {
 	}
 	
 	public void insertarAmigo(String usuario, String amigo) throws SQLException {
-		String sentSQL = "insert into Amigos(nombre,amigo) values (" +
-				"'" + usuario + "'," +
-				"'" + amigo + "'" + 
-				");";
-		stmt.executeUpdate( sentSQL );
+		String sql = "select * from Amigos where nombre='" + usuario + "';";
+		ResultSet res = stmt.executeQuery(sql);
+		if(!(res.next())){
+			String sentSQL = "insert into Amigos(nombre,amigo) values (" +
+					"'" + usuario + "'," +
+					"'" + amigo + "'" + 
+					");";
+			stmt.executeUpdate( sentSQL );
+		}
+		while (!(res.next())) {
+			System.out.println("esta");
+			String amigo_bd = res.getString("amigo");
+			if(amigo_bd.equals(amigo)){
+				System.out.println("Ya está");
+			}else{
+				String sentSQL = "insert into Amigos(nombre,amigo) values (" +
+						"'" + usuario + "'," +
+						"'" + amigo + "'" + 
+						");";
+				stmt.executeUpdate( sentSQL );
+			}
+		}
 	}
+	
 	public ArrayList<String> listaNombreAmigos(String nombreUsuario) throws SQLException {
 		ArrayList<String> listaAmigos = new ArrayList<String>();
-		String sentSQL = "select amigo from Usuarios where nombre='" + nombreUsuario + "';";
+		String sentSQL = "select * from Amigos where nombre='" + nombreUsuario + "';";
 		ResultSet res = stmt.executeQuery(sentSQL);
 		String amigo = "";
 		while (res.next()) {
-			amigo = res.getString(amigo);
+			amigo = res.getString("amigo");
 			listaAmigos.add(amigo);
 		}
 		return listaAmigos;

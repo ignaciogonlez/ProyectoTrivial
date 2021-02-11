@@ -36,7 +36,7 @@ public class VentanaAmigos extends JFrame {
 		getContentPane().add(panelSuperior,"North");
 
 		JPanel panelCentral = new JPanel(new FlowLayout());
-		//crearTabla();
+		crearTabla();
 		panelCentral.add(tAmigos);
 		getContentPane().add(panelCentral,"Center");
 
@@ -62,20 +62,18 @@ public class VentanaAmigos extends JFrame {
 		});
 	}
 	
-	/**
 	private void crearTabla(){
 		tAmigos = new JTable();
 		DefaultTableModel modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(new Object[]{"Usuario", "Puntuación"});
+		modelo.setColumnIdentifiers(new Object[]{"Usuario"});
 		try{
-			ArrayList<Usuario> listaAmigos = Main.getSistema().getbd().sacarAmigos(Main.getUsuarioActual().getNombre());
-			for(Usuario u : listaAmigos){
-				modelo.addRow(new Object[]{u.getNombre(), u.getPuntuacion()});
+			ArrayList<String> listaAmigos = Main.getSistema().getbd().listaNombreAmigos(Main.getUsuarioActual());
+			for(String s : listaAmigos){
+				modelo.addRow(new Object[]{s});
 			}
 			tAmigos.setModel(modelo);
 		}catch (Exception e){
 			System.out.println(e);
 		}
 	}
-	**/
 }

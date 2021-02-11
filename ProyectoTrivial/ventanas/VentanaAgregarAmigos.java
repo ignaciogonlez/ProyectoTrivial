@@ -23,24 +23,28 @@ public class VentanaAgregarAmigos extends JFrame{
 		setLocationRelativeTo( null );
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		
-		JPanel panelSuperior = new JPanel(new FlowLayout());
-		TfBuscar = new JTextField();
-		TfBuscar.setSize(160, 25);
-		panelSuperior.add(TfBuscar);
-		bAgregar = new JButton("Agregar");
-		panelSuperior.add(bAgregar);
-		getContentPane().add(panelSuperior,"North");
-		
 		JPanel panelCentral = new JPanel(new FlowLayout());
-		lMensaje = new JLabel("Introduce el nombre del usuario que quieras agregar");
-		panelCentral.add(lMensaje);
+		bAgregar = new JButton("Agregar");
+		panelCentral.add(bAgregar);
 		getContentPane().add(panelCentral,"Center");
 		
-		/**
+		JPanel panelSuperior = new JPanel(new FlowLayout());
+		TfBuscar = new JTextField();
+		TfBuscar.setBounds(270, 50, 100, 25);
+		panelSuperior.add(TfBuscar);
+		getContentPane().add(panelSuperior,"North");
+		
+		JPanel panelInferior = new JPanel(new FlowLayout());
+		lMensaje = new JLabel("Introduce el nombre del usuario que quieras agregar");
+		panelInferior.add(lMensaje);
+		getContentPane().add(panelInferior,"South");
+		
+		
 		bAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(Main.getSistema().getbd().verificarYAgregarUsuario(TfBuscar.getText(), Main.getUsuarioActual().getListaAmigos())){
+					String amigo = TfBuscar.getText();
+					if(Main.getSistema().getbd().verificarUsuario(amigo)){
 						lMensaje = new JLabel("Se ha agregado nuevo amigo correctamente");
 						lMensaje.setForeground(Color.GREEN);
 						lMensaje.repaint();
@@ -54,7 +58,6 @@ public class VentanaAgregarAmigos extends JFrame{
 				}
 			}
 		});
-		**/
 	}
 
 }
