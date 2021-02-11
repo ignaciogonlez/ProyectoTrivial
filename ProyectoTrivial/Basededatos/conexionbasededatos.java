@@ -74,12 +74,12 @@ public class conexionbasededatos {
 				stmt.executeUpdate(stat);
 
 				
-				//log( Level.INFO, "BD creación de tabla\t" + stat, null );
+				log( Level.INFO, "BD creación de tabla\t" + stat, null );
 				
 				System.out.println("Las tablas han sido creadas corretamente");
 				
 		}catch(SQLException e) {
-			//log( Level.SEVERE, "Error en creación de base de datos", e );
+			log( Level.SEVERE, "Error en creación de base de datos", e );
 			System.out.println("no se han podido borrar");
 		}
 	}
@@ -93,11 +93,11 @@ public class conexionbasededatos {
 			stmt.executeUpdate("drop table if exists Preguntas");
 			stmt.executeUpdate("drop table if exists Respuestas");
 			
-			//log( Level.INFO, "Reiniciada base de datos", null );
+			log( Level.INFO, "Reiniciada base de datos", null );
 			
 		} catch (SQLException e) {
 			
-			//log( Level.SEVERE, "Error en reinicio de base de datos", e );
+			log( Level.SEVERE, "Error en reinicio de base de datos", e );
 			
 		}
 	}
@@ -112,11 +112,11 @@ public class conexionbasededatos {
 			if (stmt!=null) stmt.close();
 			if (conn!=null) conn.close();
 			
-			//log( Level.INFO, "Cierre de base de datos", null );
+			log( Level.INFO, "Cierre de base de datos", null );
 			
 		} catch (SQLException e) {
 			
-			//log( Level.SEVERE, "Error en cierre de base de datos", e );
+			log( Level.SEVERE, "Error en cierre de base de datos", e );
 		}
 	}
 	

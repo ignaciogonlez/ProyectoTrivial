@@ -38,7 +38,7 @@ public class Jugador{
         properties3 = Main.getProperties3();
         properties4 = Main.getProperties4();
         
-        rellenarPosiciones(codigo);
+        rellenarPosiciones(codigo, 0);
     }
 	
 	public float getx() {
@@ -62,24 +62,26 @@ public class Jugador{
 	     g.fillRect(rect.x, rect.y, rect.width, rect.height);
 	}
 	
-	public void rellenarPosiciones(int codigo) {
+	public void rellenarPosiciones(int codigo, int index) {
 		
-		if(codigo == 1) {
-			for(int i = 0; i < 11; i++) {
-				posiciones[i] = properties1.getProperty(Integer.toString(i+1));
-			}
-					
-		}else if(codigo == 2) {
-			for(int i = 0; i < 11; i++) {
-				posiciones[i] = properties2.getProperty(Integer.toString(i+1));
-			}
-		}else if(codigo == 3) {
-			for(int i = 0; i < 11; i++) {
-				posiciones[i] = properties3.getProperty(Integer.toString(i+1));
-			}
-		}else {
-			for(int i = 0; i < 11; i++) {
-				posiciones[i] = properties4.getProperty(Integer.toString(i+1));
+		if(index < 11) {
+			
+			if(codigo == 1) {
+				posiciones[index] = properties1.getProperty(Integer.toString(index+1));
+				rellenarPosiciones(1, ++index);
+						
+			}else if(codigo == 2) {
+				posiciones[index] = properties2.getProperty(Integer.toString(index+1));
+				rellenarPosiciones(2, ++index);
+				
+			}else if(codigo == 3) {
+				posiciones[index] = properties3.getProperty(Integer.toString(index+1));
+				rellenarPosiciones(3, ++index);
+				
+			}else {
+				posiciones[index] = properties4.getProperty(Integer.toString(index+1));
+				rellenarPosiciones(4, ++index);
+				
 			}
 		}
 	}
